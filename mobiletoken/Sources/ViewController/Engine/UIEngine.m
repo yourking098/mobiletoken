@@ -21,6 +21,7 @@ static UIEngine *_instance=nil;
 
 - (AppDelegate *)appDelegate
 {
+    //sdfsdf
     return (AppDelegate *)[UIApplication sharedApplication].delegate;
 }
 
