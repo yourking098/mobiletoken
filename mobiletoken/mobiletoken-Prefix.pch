@@ -1,0 +1,46 @@
+//
+//  峰小店-Prefix.pch
+//  峰小店
+//
+//  Created by u1city01 on 15-3-11.
+//  Copyright (c) 2015年 u1city01. All rights reserved.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "AppMacro.h"
+
+#endif
+
+#define ACCESS_TOKEN_KEY @"ACCESS_TOKEN_KEY"
+#define EXPIRES_DATE_KEY @"EXPIRES_DATE_KEY"
+
+#define KSCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+
+#define KSCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+
+#define KLINE_WIDTH [UIScreen mainScreen].bounds.size.width == 320 ? 0.5f : 0.25f
+
+#define CGRECT_NO_NAV(x,y,w,h) CGRectMake((x), (y+(IsiOS7Later?20:0)), (w), (h))
+#define CGRECT_HAVE_NAV(x,y,w,h) CGRectMake((x), (y+(IsiOS7Later?64:0)), (w), (h))
+#define CGPOINT_NO_NAV(x,y) CGPointMake((x), (y+(IsiOS7Later?20:0)))
+#define CGPOINT_HAVE_NAV(x,y) CGPointMake((x), (y+(IsiOS7Later?64:0)))
+#define CGSIZE_NO_NAV(x,y) CGSizeMake((x), (y+(IsiOS7Later?20:0)))
+#define CGSIZE_HAVE_NAV(x,y) CGSizeMake((x), (y+(IsiOS7Later?64:0)))
+
+//设计切图计算比例
+#define SCALAE KSCREEN_WIDTH/375.0/2.0
+
+
+#ifdef DEBUG
+# define DLog(...) NSLog(__VA_ARGS__)
+#else
+# define DLog(...) /* */
+#endif
