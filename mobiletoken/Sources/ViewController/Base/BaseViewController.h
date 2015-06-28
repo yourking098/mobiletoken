@@ -15,6 +15,14 @@
 #import "UIView+QM_Category.h"
 #import "CustomerModel.h"
 #import "BaseView.h"
+#import "JKPromptView.h"
+
+/*弹出框的图片类型*/
+typedef NS_ENUM(NSInteger,PromptImageType){
+    PromptOK=1,
+    PromptAlert=2,
+    PromptDel=3
+};
 
 @interface BaseViewController : UIViewController<MBProgressHUDDelegate, UITextFieldDelegate, NavigationItemDelegate,UIAlertViewDelegate> {
     CustomerModel *_cust;
@@ -182,6 +190,14 @@
  替换平台码
  */
 - (NSString*)replacePlatformId:(NSString*)strUrl index:(NSInteger *)index;
+
+
+/*
+ 弹出警告提示框
+ *showWithImageName如果不传，则使用默认
+ */
+-(void) showPromptMessage:(NSString *)message andImageNameType:(int)imageType;
+
 
 @end
 

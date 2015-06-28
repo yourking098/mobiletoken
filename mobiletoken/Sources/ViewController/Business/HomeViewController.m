@@ -79,6 +79,8 @@
             utterance.pitchMultiplier = 1.0;
             [synth speakUtterance:utterance];
         }
+    } else {
+        [self showPromptMessage:@"对不起，您的设备不支持语音播报！" andImageNameType:PromptOK];
     }
 }
 

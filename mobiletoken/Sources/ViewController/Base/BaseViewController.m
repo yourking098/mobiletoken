@@ -419,6 +419,8 @@
 
 }
 
+
+
 #pragma mark - 画线
 
 /*!
@@ -564,5 +566,22 @@
     // Return the new image.
     return newImage;
 }
+
+
+/*
+ 弹出警告提示框
+ */
+-(void) showPromptMessage:(NSString *)message andImageNameType:(int)imageType{
+    NSString *strImageName=@"";
+    if (imageType==PromptOK) {
+        strImageName=@"picker_ok_sigh";
+    }else if (imageType==PromptAlert){
+        strImageName=@"picker_alert_sigh";
+    }else if (imageType==PromptDel){
+        strImageName=@"picker_del_sigh";
+    }
+    [JKPromptView showWithImageName:strImageName message:message];
+}
+
 
 @end
