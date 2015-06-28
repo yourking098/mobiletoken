@@ -14,6 +14,7 @@
 #import "GuideViewController.h"
 #import "HomeViewController.h"
 #import "SetupViewController.h"
+#import "SerialNumberViewController.h"
 
 static UIEngine *_instance=nil;
 
@@ -110,18 +111,20 @@ static UIEngine *_instance=nil;
  * 进入系统业务判断
  */
 - (void)loginBeeShop {
-    
     //引导页
     if ([self isShouldShowGuideViow]) {
         NSString *darenvalue=@"0";
         [[NSUserDefaults standardUserDefaults] setObject:darenvalue forKey:@"darenvalue"];
         
         GuideViewController *guideVC = [[GuideViewController alloc] init];
-        UINavigationController *firstNav = [[UINavigationController alloc] initWithRootViewController:guideVC];
-        self.appDelegate.window.rootViewController= firstNav;
+        UINavigationController *guideNav = [[UINavigationController alloc] initWithRootViewController:guideVC];
+        [self rootView:guideNav];
+        
     } else if (enCust.serialNumber==nil) {
         //进入查看序列号页面
-        
+        SerialNumberViewController *serialNumberVC = [[SerialNumberViewController alloc] init];
+        UINavigationController *serailNav = [[UINavigationController alloc] initWithRootViewController:serialNumberVC];
+        [self rootView:serailNav];
     } else {
         //进入首页
         [self loginInMainView];
@@ -190,6 +193,13 @@ static UIEngine *_instance=nil;
     return YES;
 }
 
+
+/*!
+ * 显示当前页面
+ */
+- (void)rootView:(UIViewController*)viewController {
+    self.appDelegate.window.rootViewController = viewController;
+}
 
 
 @end

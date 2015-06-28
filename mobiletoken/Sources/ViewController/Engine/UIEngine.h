@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CustomerModel.h"
 
+
 @interface UIEngine : NSObject<UITabBarControllerDelegate>
 {
     CustomerModel *enCust;
@@ -46,5 +47,11 @@
  * 进入首页
  */
 - (void)loginInMainView;
+
+
+/*!
+ * 显示当前页面
+ */
+- (void)rootView:(UIViewController*)viewController;
 
 @end

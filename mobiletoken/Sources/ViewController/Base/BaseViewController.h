@@ -14,6 +14,7 @@
 #import "TAOCopyLabel.h"
 #import "UIView+QM_Category.h"
 #import "CustomerModel.h"
+#import "BaseView.h"
 
 @interface BaseViewController : UIViewController<MBProgressHUDDelegate, UITextFieldDelegate, NavigationItemDelegate,UIAlertViewDelegate> {
     CustomerModel *_cust;

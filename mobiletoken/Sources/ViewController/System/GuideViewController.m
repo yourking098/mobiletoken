@@ -9,6 +9,8 @@
 #import "GuideViewController.h"
 #import "ColorHelper.h"
 #import "UIEngine.h"
+#import "HomeViewController.h"
+#import "SerialNumberViewController.h"
 
 @interface GuideViewController ()
 
@@ -131,9 +133,17 @@
     NSDictionary *plistDic = [[NSBundle mainBundle] infoDictionary];
     NSString *currntVersion = [plistDic objectForKey:@"CFBundleVersion"];
     [[NSUserDefaults standardUserDefaults] setObject:currntVersion forKey:@"version"];
-    
+    CustomerModel *cust = [[UIEngine getinstance] getCustomerModel];
     //进入查看序列号页面
-    
+    if (cust.serialNumber==nil) {
+        //进入查看序列号页面
+        SerialNumberViewController *serialNumberVC = [[SerialNumberViewController alloc] init];
+        UINavigationController *serailNav = [[UINavigationController alloc] initWithRootViewController:serialNumberVC];
+        [[UIEngine getinstance] rootView:serailNav];
+    } else {
+        //进入首页
+        [[UIEngine getinstance] loginInMainView];
+    }
 }
 
 - (void)didReceiveMemoryWarning
