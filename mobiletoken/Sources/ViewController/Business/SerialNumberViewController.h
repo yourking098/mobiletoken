@@ -11,4 +11,8 @@
 
 @interface SerialNumberViewController : BaseViewController
 
+
+@property(nonatomic,strong) UILabel *lblSerialNum;
+
+
 @end
