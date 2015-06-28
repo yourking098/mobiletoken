@@ -33,7 +33,6 @@
 }
 
 -(void) buildUI{
-    
     if (_cust.serialNumber!=nil) {
         _strCheckCode = [self createAuthCodeForIos:_cust.serialNumber];
     }
@@ -59,28 +58,25 @@
     [button setTitle:@"语音播报" forState:UIControlStateNormal];
     [button setTitleColor:[ColorHelper colorWithHexString:@"#FFFFFF"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(voice) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
     
+    [self.view addSubview:button];
 }
 
 -(void) voice{
-    
-    
     if(IsiOS7Later){
         NSString *strCodeSigleNum=@"";
-        
         AVSpeechUtterance *utterance;
         AVSpeechSynthesizer *synth = [[AVSpeechSynthesizer alloc] init];
         //获取当前系统语音
         AVSpeechSynthesisVoice *voice;
-        
         for(int i=0;i<_strCheckCode.length;i++){
             NSRange range1=[_strCheckCode rangeOfComposedCharacterSequenceAtIndex:i];
             strCodeSigleNum=[_strCheckCode substringWithRange:range1];
             utterance = [AVSpeechUtterance speechUtteranceWithString:strCodeSigleNum];
-            voice= [AVSpeechSynthesisVoice voiceWithLanguage:@"zh-CN"];
+            voice= [AVSpeechSynthesisVoice voiceWithLanguage:@"zh-tw"];//台湾  zh-cn
             utterance.voice = voice;
-            utterance.rate *= 0.3;
+            utterance.rate *= 0.166;
+            utterance.pitchMultiplier = 1.0;
             [synth speakUtterance:utterance];
         }
     }
