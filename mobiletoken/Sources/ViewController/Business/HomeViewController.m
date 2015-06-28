@@ -10,8 +10,11 @@
 #import "AesHelper.h"
 #import "CommonHelper.h"
 
+@import AVFoundation;
+
 @interface HomeViewController (){
     NSString *_mcodeForios;
+    NSString *_strCheckCode;
 }
 
 @end
@@ -24,19 +27,63 @@
     [self initNavItem:@"首页"];
     _cust=[[UIEngine getinstance] getCustomerModel];
     _mcodeForios =@"Y*8#!H19*(0)";//干扰码
+    _strCheckCode=@"";
     [self buildUI];
+    
 }
 
 -(void) buildUI{
-    NSString *strCheckCode=@"";
+    
     if (_cust.serialNumber!=nil) {
-        strCheckCode = [self createAuthCodeForIos:_cust.serialNumber];
+        _strCheckCode = [self createAuthCodeForIos:_cust.serialNumber];
     }
     
     CGRect rectSerial=CGRectMake(0, 150, KSCREEN_WIDTH, 20);
     UIFont *sysFont = [UIFont systemFontOfSize:16];
-    _lblCheckCode=[[BaseView alloc] buildLabel:rectSerial title:strCheckCode color:@"#999999" font:sysFont align:NSTextAlignmentCenter];
+    _lblCheckCode=[[BaseView alloc] buildLabel:rectSerial title:_strCheckCode color:@"#999999" font:sysFont align:NSTextAlignmentCenter];
     [self.view addSubview:_lblCheckCode];
+    
+    CGFloat btnW=150;
+    CGFloat btnH=50;
+    CGFloat btnX=(KSCREEN_WIDTH-btnW)/2.0;
+    CGFloat btnY=_lblCheckCode.bottom+50;
+    CGRect btnRect=CGRectMake(btnX, btnY, btnW, btnH);
+    UIFont *btnFont=[UIFont systemFontOfSize:16];
+    
+    UIButton *button= [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame=btnRect;
+    button.backgroundColor = [ColorHelper colorWithHexString:@"#FF6347"];
+    button.titleLabel.font = btnFont;
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    button.layer.cornerRadius = 10*SCALAE;
+    [button setTitle:@"语音播报" forState:UIControlStateNormal];
+    [button setTitleColor:[ColorHelper colorWithHexString:@"#FFFFFF"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(voice) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    
+}
+
+-(void) voice{
+    
+    
+    if(IsiOS7Later){
+        NSString *strCodeSigleNum=@"";
+        
+        AVSpeechUtterance *utterance;
+        AVSpeechSynthesizer *synth = [[AVSpeechSynthesizer alloc] init];
+        //获取当前系统语音
+        AVSpeechSynthesisVoice *voice;
+        
+        for(int i=0;i<_strCheckCode.length;i++){
+            NSRange range1=[_strCheckCode rangeOfComposedCharacterSequenceAtIndex:i];
+            strCodeSigleNum=[_strCheckCode substringWithRange:range1];
+            utterance = [AVSpeechUtterance speechUtteranceWithString:strCodeSigleNum];
+            voice= [AVSpeechSynthesisVoice voiceWithLanguage:@"zh-CN"];
+            utterance.voice = voice;
+            utterance.rate *= 0.3;
+            [synth speakUtterance:utterance];
+        }
+    }
 }
 
 /*!
@@ -64,12 +111,13 @@
                           strCode,
                           [dateNums substringWithRange:NSMakeRange(0, 3)]
                           ];
-    strNewNums=[self avgMergeStr:strNewNums andStr2:_mcodeForios];////合并常量
+    strNewNums=[self avgMergeStr:strNewNums andStr2:_mcodeForios];//合并常量
     strNewNums = [AesHelper md5:strNewNums];//MD5加密   32位
     strNewNums = [CommonHelper stringToSingleNum:strNewNums];//转成纯数字
     strNewNums = [CommonHelper shortString:strNewNums andLength:6];//缩短成6个数字
     
     return strNewNums;
+    
 }
 
 
