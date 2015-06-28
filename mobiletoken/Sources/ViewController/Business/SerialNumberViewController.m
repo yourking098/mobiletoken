@@ -20,18 +20,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initNavItem:@"查看序列号"];
+    
+    _cust=[[UIEngine getinstance] getCustomerModel];
+    //第一次安装启动APP生成序列号
+    if (_cust.serialNumber==nil) {
+        NSString *strSerailNumber=[NSString stringWithFormat:@"%@",[self createAppSerialNums]];
+        _cust.serialNumber=strSerailNumber;
+        [[UIEngine getinstance] setCustomerModel:_cust];
+    }
     [self buildUI];
-    
-    
 }
 
 
 -(void) buildUI{
-    NSString *strSerailNumber=[NSString stringWithFormat:@"%@",[self createAppSerialNums]];
-    
     CGRect rectSerial=CGRectMake(0, 150, KSCREEN_WIDTH, 20);
     UIFont *sysFont = [UIFont systemFontOfSize:16];
-    _lblSerialNum=[[BaseView alloc] buildLabel:rectSerial title:strSerailNumber color:@"#999999" font:sysFont align:NSTextAlignmentCenter];
+    _lblSerialNum=[[BaseView alloc] buildLabel:rectSerial title:_cust.serialNumber color:@"#999999" font:sysFont align:NSTextAlignmentCenter];
     [self.view addSubview:_lblSerialNum];
     
     CGFloat btnW=150;
