@@ -11,4 +11,7 @@
 
 @interface HomeViewController : BaseViewController
 
+@property(nonatomic,strong) UILabel *lblCheckCode;
+
+
 @end

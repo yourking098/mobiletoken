@@ -50,4 +50,19 @@
 +(NSMutableArray *) getArrayCacheDataByName:(NSString *)coachName;
 
 
+/*!
+ * @method 字符串转成32位数字序列号。数字字母ASCII是两位，这边只取个位。
+ * @param  singleUidCode 手机唯一码产生
+ * @result 生成一个纯32位数字序列号
+ */
++(NSString *) stringToSingleNum:(NSString *)singleUidCode;
+
+/*!
+ * @method 获取长字符串固定长度的短字符串。
+ * @param  serialCode 一个纯32位数字序列号
+ * @result 生成一个纯32位数字序列号
+ */
++(NSString *) shortString:(NSString *)serialCode andLength:(NSUInteger)len;
+
+
 @end
