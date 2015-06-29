@@ -31,12 +31,12 @@
     _strCheckCode=@"";
     [self buildUI];
     
-    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(animation1) userInfo:nil repeats:YES];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(animation1:) userInfo:nil repeats:YES];
     
-    _currentSecond=1;//当前秒数
 }
 
 -(void) buildUI{
+    _strCheckCode = [self createAuthCodeForIos:_cust.serialNumber];
     CGRect rectSerial=CGRectMake(0, 150, KSCREEN_WIDTH, 20);
     UIFont *sysFont = [UIFont systemFontOfSize:16];
     _lblCheckCode=[[BaseView alloc] buildLabel:rectSerial title:_strCheckCode color:@"#999999" font:sysFont align:NSTextAlignmentCenter];
@@ -64,34 +64,28 @@
     CGRect sliderFrame = CGRectMake(60, button.bottom+50, 200, 200);
     _circularSlider = [[EFCircularSlider alloc] initWithFrame:sliderFrame];
     [_circularSlider addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
-    _circularSlider.currentValue=50;
+    
+    _circularSlider.minimumValue=0;
+    _circularSlider.maximumValue=30;
+    _circularSlider.currentValue=0;
     [self.view addSubview:_circularSlider];
 }
 
--(void)animation1 {
-    if (_currentSecond==1) {
+-(void)animation1:(NSTimer *)timer {
+    if (_circularSlider.currentValue >= 30) {
+        _circularSlider.currentValue = 0.00;
         _strCheckCode = [self createAuthCodeForIos:_cust.serialNumber];
         _lblCheckCode.text=_strCheckCode;
-    }
-    NSLog(@"%d",_currentSecond);
-    
-    CGFloat eachSecondValue = 100.00/30.00;
-    _circularSlider.currentValue=_currentSecond*eachSecondValue;
-    
-    if(_currentSecond<30){
-        _currentSecond++;
     } else {
-        _currentSecond=1;
+        _circularSlider.currentValue=_circularSlider.currentValue+0.01;
     }
-    
+    NSLog(@"%.2lf",_circularSlider.currentValue);
 }
 
 
 -(void)valueChanged:(EFCircularSlider*)slider {
     NSLog(@"%.02f",slider.currentValue);
-    //    _valueLabel.text = [NSString stringWithFormat:@"%.02f", slider.currentValue ];
 }
-
 
 -(void) voice{
     if(IsiOS7Later){

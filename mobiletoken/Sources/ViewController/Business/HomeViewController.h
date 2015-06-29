@@ -12,7 +12,6 @@
 
 @interface HomeViewController : BaseViewController{
     NSTimer *_timer;
-    int _currentSecond;
 }
 
 @property(nonatomic,strong) UILabel *lblCheckCode;
