@@ -298,16 +298,57 @@
     
     NSUInteger pLen = length / len;//要把str分成6段(参数len=6)，pLen是每段的长度
     NSUInteger pIndex = length % len;//pIndex一定不会超过pLen
+    
+    while (pLen < pIndex) {//目前需求只有返回12和6位长度，这两种情况下，这种写法肯定OK
+        serialCode = [self avgMergeStr:serialCode andStr2:serialCode];//用自己平均混合自己
+        length = serialCode.length;
+        pLen = length / len;//要把str分成6段(参数len=6)，pLen是每段的长度
+        pIndex = length % len;//pIndex一定要不超过pLen
+    }
+    
     if (pIndex == 0)
         pIndex = pLen;//如果刚好整除，则标识成最后一个位置
     for (int i = 0; i < len; i++) {
         NSRange range=NSMakeRange(i * pLen, pLen);
         NSString *pStr= [serialCode substringWithRange:range];////取出每一段字符串
         
-        pStr=[pStr substringFromIndex:pStr.length-1];//每段里第pIndex将被使用
+        pStr=[pStr substringWithRange:NSMakeRange(pIndex-1, 1)];////每段里第pIndex将被使用
         strResult=[strResult stringByAppendingFormat:@"%@",pStr];
     }
     return strResult;
+}
+
+
+/// <summary>
+/// 交叉合并两个字符串
+/// </summary>
++(NSString *) avgMergeStr:(NSString *)str1 andStr2:(NSString *)str2{
+    NSUInteger len1 = str1.length;
+    NSUInteger len2 = str2.length;
+    NSString *result = @"";
+    if (len1>=len2) {//str1比较长
+        for (int i = 0; i < len2; i++) {
+            NSRange range1=[str1 rangeOfComposedCharacterSequenceAtIndex:i];
+            NSRange range2=[str2 rangeOfComposedCharacterSequenceAtIndex:i];
+            NSString *strRange1=[str1 substringWithRange:range1];
+            NSString *strRange2=[str2 substringWithRange:range2];
+            result=[result stringByAppendingFormat:@"%@",strRange1];
+            result=[result stringByAppendingFormat:@"%@",strRange2];
+        }
+        if (len1 > len2)
+            result =[result stringByAppendingFormat:@"%@",[str1 substringFromIndex:len2]];//把str1剩余部分加回来
+    } else {//str2比较长
+        for (int i = 0; i < len1; i++) {
+            NSRange range1=[str1 rangeOfComposedCharacterSequenceAtIndex:i];
+            NSRange range2=[str2 rangeOfComposedCharacterSequenceAtIndex:i];
+            NSString *strRange1=[str1 substringWithRange:range1];
+            NSString *strRange2=[str2 substringWithRange:range2];
+            result=[result stringByAppendingFormat:@"%@",strRange1];
+            result=[result stringByAppendingFormat:@"%@",strRange2];
+        }
+        result =[result stringByAppendingFormat:@"%@",[str2 substringFromIndex:len1]];//把str2剩余部分加回来
+    }
+    return result;
 }
 
 

@@ -64,5 +64,11 @@
  */
 +(NSString *) shortString:(NSString *)serialCode andLength:(NSUInteger)len;
 
+/*!
+ * @method 交叉合并两个字符串
+ *
+ * @result 生成一个纯32位数字序列号
+ */
++(NSString *) avgMergeStr:(NSString *)str1 andStr2:(NSString *)str2;
 
 @end

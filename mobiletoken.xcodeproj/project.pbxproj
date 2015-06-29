@@ -19,7 +19,6 @@
 		24DFC24A1B3ABA2500A4AB30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24DFC2481B3ABA2500A4AB30 /* Main.storyboard */; };
 		24DFC24C1B3ABA2500A4AB30 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24DFC24B1B3ABA2500A4AB30 /* Images.xcassets */; };
 		24DFC24F1B3ABA2500A4AB30 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24DFC24D1B3ABA2500A4AB30 /* LaunchScreen.xib */; };
-		24DFC25B1B3ABA2500A4AB30 /* mobiletokenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DFC25A1B3ABA2500A4AB30 /* mobiletokenTests.m */; };
 		24DFC2721B3ABC0B00A4AB30 /* UIEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DFC2711B3ABC0B00A4AB30 /* UIEngine.m */; };
 		24DFC2771B3ABCB600A4AB30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DFC2761B3ABCB600A4AB30 /* UIKit.framework */; };
 		24DFC27C1B3ABE3D00A4AB30 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DFC27B1B3ABE3D00A4AB30 /* GuideViewController.m */; };
@@ -45,16 +44,6 @@
 		CB2903761B40B3F0001AEC4A /* UIView+JKPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2903751B40B3F0001AEC4A /* UIView+JKPicker.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		24DFC2551B3ABA2500A4AB30 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 24DFC2331B3ABA2500A4AB30 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 24DFC23A1B3ABA2500A4AB30;
-			remoteInfo = mobiletoken;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		2487653A1B3D59DF00DE6F38 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		2487653B1B3D59DF00DE6F38 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
@@ -78,7 +67,6 @@
 		24DFC2491B3ABA2500A4AB30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		24DFC24B1B3ABA2500A4AB30 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		24DFC24E1B3ABA2500A4AB30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		24DFC2541B3ABA2500A4AB30 /* mobiletokenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mobiletokenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24DFC2591B3ABA2500A4AB30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24DFC25A1B3ABA2500A4AB30 /* mobiletokenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mobiletokenTests.m; sourceTree = "<group>"; };
 		24DFC2701B3ABC0B00A4AB30 /* UIEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIEngine.h; sourceTree = "<group>"; };
@@ -139,13 +127,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		24DFC2511B3ABA2500A4AB30 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -178,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				24DFC23B1B3ABA2500A4AB30 /* mobiletoken.app */,
-				24DFC2541B3ABA2500A4AB30 /* mobiletokenTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -455,24 +435,6 @@
 			productReference = 24DFC23B1B3ABA2500A4AB30 /* mobiletoken.app */;
 			productType = "com.apple.product-type.application";
 		};
-		24DFC2531B3ABA2500A4AB30 /* mobiletokenTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 24DFC2611B3ABA2500A4AB30 /* Build configuration list for PBXNativeTarget "mobiletokenTests" */;
-			buildPhases = (
-				24DFC2501B3ABA2500A4AB30 /* Sources */,
-				24DFC2511B3ABA2500A4AB30 /* Frameworks */,
-				24DFC2521B3ABA2500A4AB30 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				24DFC2561B3ABA2500A4AB30 /* PBXTargetDependency */,
-			);
-			name = mobiletokenTests;
-			productName = mobiletokenTests;
-			productReference = 24DFC2541B3ABA2500A4AB30 /* mobiletokenTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -484,10 +446,6 @@
 				TargetAttributes = {
 					24DFC23A1B3ABA2500A4AB30 = {
 						CreatedOnToolsVersion = 6.3;
-					};
-					24DFC2531B3ABA2500A4AB30 = {
-						CreatedOnToolsVersion = 6.3;
-						TestTargetID = 24DFC23A1B3ABA2500A4AB30;
 					};
 				};
 			};
@@ -505,7 +463,6 @@
 			projectRoot = "";
 			targets = (
 				24DFC23A1B3ABA2500A4AB30 /* mobiletoken */,
-				24DFC2531B3ABA2500A4AB30 /* mobiletokenTests */,
 			);
 		};
 /* End PBXProject section */
@@ -518,13 +475,6 @@
 				24DFC24A1B3ABA2500A4AB30 /* Main.storyboard in Resources */,
 				24DFC24F1B3ABA2500A4AB30 /* LaunchScreen.xib in Resources */,
 				24DFC24C1B3ABA2500A4AB30 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		24DFC2521B3ABA2500A4AB30 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,23 +519,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		24DFC2501B3ABA2500A4AB30 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				24DFC25B1B3ABA2500A4AB30 /* mobiletokenTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		24DFC2561B3ABA2500A4AB30 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 24DFC23A1B3ABA2500A4AB30 /* mobiletoken */;
-			targetProxy = 24DFC2551B3ABA2500A4AB30 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		24DFC2481B3ABA2500A4AB30 /* Main.storyboard */ = {
@@ -713,40 +647,6 @@
 			};
 			name = Release;
 		};
-		24DFC2621B3ABA2500A4AB30 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = mobiletokenTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mobiletoken.app/mobiletoken";
-			};
-			name = Debug;
-		};
-		24DFC2631B3ABA2500A4AB30 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = mobiletokenTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mobiletoken.app/mobiletoken";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -764,15 +664,6 @@
 			buildConfigurations = (
 				24DFC25F1B3ABA2500A4AB30 /* Debug */,
 				24DFC2601B3ABA2500A4AB30 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		24DFC2611B3ABA2500A4AB30 /* Build configuration list for PBXNativeTarget "mobiletokenTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				24DFC2621B3ABA2500A4AB30 /* Debug */,
-				24DFC2631B3ABA2500A4AB30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

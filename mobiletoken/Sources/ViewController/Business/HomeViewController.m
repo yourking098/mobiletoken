@@ -109,7 +109,7 @@
                           strCode,
                           [dateNums substringWithRange:NSMakeRange(0, 3)]
                           ];
-    strNewNums=[self avgMergeStr:strNewNums andStr2:_mcodeForios];//合并常量
+    strNewNums = [CommonHelper avgMergeStr:strNewNums andStr2:_mcodeForios];//合并常量
     strNewNums = [AesHelper md5:strNewNums];//MD5加密   32位
     strNewNums = [CommonHelper stringToSingleNum:strNewNums];//转成纯数字
     strNewNums = [CommonHelper shortString:strNewNums andLength:6];//缩短成6个数字
@@ -119,34 +119,6 @@
 }
 
 
--(NSString *) avgMergeStr:(NSString *)str1 andStr2:(NSString *)str2{
-    NSUInteger len1 = str1.length;
-    NSUInteger len2 = str2.length;
-    NSString *result = @"";
-    if (len1>=len2) {//str1比较长
-        for (int i = 0; i < len2; i++) {
-            NSRange range1=[str1 rangeOfComposedCharacterSequenceAtIndex:i];
-            NSRange range2=[str2 rangeOfComposedCharacterSequenceAtIndex:i];
-            NSString *strRange1=[str1 substringWithRange:range1];
-            NSString *strRange2=[str2 substringWithRange:range2];
-            result=[result stringByAppendingFormat:@"%@",strRange1];
-            result=[result stringByAppendingFormat:@"%@",strRange2];
-        }
-        if (len1 > len2)
-            result =[result stringByAppendingFormat:@"%@",[str1 substringFromIndex:len2]];//把str1剩余部分加回来
-    } else {//str2比较长
-        for (int i = 0; i < len1; i++) {
-            NSRange range1=[str1 rangeOfComposedCharacterSequenceAtIndex:i];
-            NSRange range2=[str2 rangeOfComposedCharacterSequenceAtIndex:i];
-            NSString *strRange1=[str1 substringWithRange:range1];
-            NSString *strRange2=[str2 substringWithRange:range2];
-            result=[result stringByAppendingFormat:@"%@",strRange1];
-            result=[result stringByAppendingFormat:@"%@",strRange2];
-        }
-        result =[result stringByAppendingFormat:@"%@",[str2 substringFromIndex:len1]];//把str2剩余部分加回来
-    }
-    return result;
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
