@@ -10,6 +10,7 @@
 #import "AesHelper.h"
 #import "CommonHelper.h"
 
+
 @import AVFoundation;
 
 @interface HomeViewController (){
@@ -24,19 +25,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self initNavItem:@"首页"];
+    [self initNavItem:@"每30秒更新一次"];
     _cust=[[UIEngine getinstance] getCustomerModel];
     _mcodeForios =@"Y*8#!H19*(0)";//干扰码
     _strCheckCode=@"";
     [self buildUI];
     
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(animation1) userInfo:nil repeats:YES];
+    
+    _currentSecond=1;//当前秒数
 }
 
 -(void) buildUI{
-    if (_cust.serialNumber!=nil) {
-        _strCheckCode = [self createAuthCodeForIos:_cust.serialNumber];
-    }
-    
     CGRect rectSerial=CGRectMake(0, 150, KSCREEN_WIDTH, 20);
     UIFont *sysFont = [UIFont systemFontOfSize:16];
     _lblCheckCode=[[BaseView alloc] buildLabel:rectSerial title:_strCheckCode color:@"#999999" font:sysFont align:NSTextAlignmentCenter];
@@ -60,7 +60,38 @@
     [button addTarget:self action:@selector(voice) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:button];
+    
+    CGRect sliderFrame = CGRectMake(60, button.bottom+50, 200, 200);
+    _circularSlider = [[EFCircularSlider alloc] initWithFrame:sliderFrame];
+    [_circularSlider addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
+    _circularSlider.currentValue=50;
+    [self.view addSubview:_circularSlider];
 }
+
+-(void)animation1 {
+    if (_currentSecond==1) {
+        _strCheckCode = [self createAuthCodeForIos:_cust.serialNumber];
+        _lblCheckCode.text=_strCheckCode;
+    }
+    NSLog(@"%d",_currentSecond);
+    
+    CGFloat eachSecondValue = 100.00/30.00;
+    _circularSlider.currentValue=_currentSecond*eachSecondValue;
+    
+    if(_currentSecond<30){
+        _currentSecond++;
+    } else {
+        _currentSecond=1;
+    }
+    
+}
+
+
+-(void)valueChanged:(EFCircularSlider*)slider {
+    NSLog(@"%.02f",slider.currentValue);
+    //    _valueLabel.text = [NSString stringWithFormat:@"%.02f", slider.currentValue ];
+}
+
 
 -(void) voice{
     if(IsiOS7Later){
@@ -113,12 +144,8 @@
     strNewNums = [AesHelper md5:strNewNums];//MD5加密   32位
     strNewNums = [CommonHelper stringToSingleNum:strNewNums];//转成纯数字
     strNewNums = [CommonHelper shortString:strNewNums andLength:6];//缩短成6个数字
-    
     return strNewNums;
-    
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

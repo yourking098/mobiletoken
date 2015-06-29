@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>2085DDDA-7221-4419-8F4D-9712C29C97F2</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>mobiletoken</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>3DFEEE06AC7C1DD3ADCD208D1B7EE987B068AFC7</key>
 		<string>https://github.com/yourking098/mobiletoken.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>mobiletoken.xcodeproj/project.xcworkspace</string>
+	<string>mobiletoken.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3DFEEE06AC7C1DD3ADCD208D1B7EE987B068AFC7</key>

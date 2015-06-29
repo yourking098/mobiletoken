@@ -40,6 +40,7 @@
 		24DFC2CA1B3AC1E600A4AB30 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DFC2C31B3AC1E600A4AB30 /* NSString+Base64.m */; };
 		24DFC2CB1B3AC1E600A4AB30 /* UIColor+RGBValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DFC2C51B3AC1E600A4AB30 /* UIColor+RGBValues.m */; };
 		24DFC2CD1B3AC1E600A4AB30 /* UIView+QM_Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DFC2C91B3AC1E600A4AB30 /* UIView+QM_Category.m */; };
+		7D7200ED1B4169B300964DC5 /* EFCircularSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7200EC1B4169B300964DC5 /* EFCircularSlider.m */; };
 		CB2903731B40B279001AEC4A /* JKPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2903721B40B279001AEC4A /* JKPromptView.m */; };
 		CB2903761B40B3F0001AEC4A /* UIView+JKPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2903751B40B3F0001AEC4A /* UIView+JKPicker.m */; };
 /* End PBXBuildFile section */
@@ -112,6 +113,8 @@
 		24DFC2C51B3AC1E600A4AB30 /* UIColor+RGBValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGBValues.m"; sourceTree = "<group>"; };
 		24DFC2C81B3AC1E600A4AB30 /* UIView+QM_Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+QM_Category.h"; sourceTree = "<group>"; };
 		24DFC2C91B3AC1E600A4AB30 /* UIView+QM_Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+QM_Category.m"; sourceTree = "<group>"; };
+		7D7200EB1B4169B300964DC5 /* EFCircularSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFCircularSlider.h; sourceTree = "<group>"; };
+		7D7200EC1B4169B300964DC5 /* EFCircularSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EFCircularSlider.m; sourceTree = "<group>"; };
 		CB2903711B40B279001AEC4A /* JKPromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKPromptView.h; sourceTree = "<group>"; };
 		CB2903721B40B279001AEC4A /* JKPromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKPromptView.m; sourceTree = "<group>"; };
 		CB2903741B40B3F0001AEC4A /* UIView+JKPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JKPicker.h"; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 		248765391B3D59DF00DE6F38 /* CustView */ = {
 			isa = PBXGroup;
 			children = (
+				7D7200EB1B4169B300964DC5 /* EFCircularSlider.h */,
+				7D7200EC1B4169B300964DC5 /* EFCircularSlider.m */,
 				CB2903741B40B3F0001AEC4A /* UIView+JKPicker.h */,
 				CB2903751B40B3F0001AEC4A /* UIView+JKPicker.m */,
 				CB2903711B40B279001AEC4A /* JKPromptView.h */,
@@ -501,6 +506,7 @@
 				24DFC2C01B3AC17500A4AB30 /* TAOInsetsTextField.m in Sources */,
 				24DFC2991B3ABFEF00A4AB30 /* SetupViewController.m in Sources */,
 				2494348B1B3E357D0065C6AE /* SerialNumberViewController.m in Sources */,
+				7D7200ED1B4169B300964DC5 /* EFCircularSlider.m in Sources */,
 				24DFC2CB1B3AC1E600A4AB30 /* UIColor+RGBValues.m in Sources */,
 				CB2903731B40B279001AEC4A /* JKPromptView.m in Sources */,
 				24DFC2A81B3AC0E300A4AB30 /* BaseViewController.m in Sources */,

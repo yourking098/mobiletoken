@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "EFCircularSlider.h"
 
-@interface HomeViewController : BaseViewController
+@interface HomeViewController : BaseViewController{
+    NSTimer *_timer;
+    int _currentSecond;
+}
 
 @property(nonatomic,strong) UILabel *lblCheckCode;
-
+@property(nonatomic,strong) EFCircularSlider *circularSlider;
 
 @end
