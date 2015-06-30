@@ -17,7 +17,7 @@
 -(void)drawInContext:(CGContextRef)ctx {
     CGPoint center = CGPointMake(self.frame.size.width / (2), self.frame.size.height / (2));
     CGFloat delta = toRadians(360 * percent);
-    CGFloat innerRadius = 98.0;
+    CGFloat innerRadius = 98.5;
     CGFloat outerRadius = 100.0;
     if (color) {
         CGContextSetFillColorWithColor(ctx, color.CGColor);

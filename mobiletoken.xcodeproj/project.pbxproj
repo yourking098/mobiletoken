@@ -42,7 +42,6 @@
 		24DFC2CD1B3AC1E600A4AB30 /* UIView+QM_Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DFC2C91B3AC1E600A4AB30 /* UIView+QM_Category.m */; };
 		CB2903731B40B279001AEC4A /* JKPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2903721B40B279001AEC4A /* JKPromptView.m */; };
 		CB2903761B40B3F0001AEC4A /* UIView+JKPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2903751B40B3F0001AEC4A /* UIView+JKPicker.m */; };
-		CB8C87661B4335E10004D9E2 /* images in Resources */ = {isa = PBXBuildFile; fileRef = CB8C875F1B4335E10004D9E2 /* images */; };
 		CB8C87671B4335E10004D9E2 /* KDBarGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8C87611B4335E10004D9E2 /* KDBarGraph.m */; };
 		CB8C87681B4335E10004D9E2 /* KDGoalBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8C87631B4335E10004D9E2 /* KDGoalBar.m */; };
 		CB8C87691B4335E10004D9E2 /* KDGoalBarPercentLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8C87651B4335E10004D9E2 /* KDGoalBarPercentLayer.m */; };
@@ -120,7 +119,6 @@
 		CB2903721B40B279001AEC4A /* JKPromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKPromptView.m; sourceTree = "<group>"; };
 		CB2903741B40B3F0001AEC4A /* UIView+JKPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JKPicker.h"; sourceTree = "<group>"; };
 		CB2903751B40B3F0001AEC4A /* UIView+JKPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JKPicker.m"; sourceTree = "<group>"; };
-		CB8C875F1B4335E10004D9E2 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = KDCustom/images; sourceTree = "<group>"; };
 		CB8C87601B4335E10004D9E2 /* KDBarGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDBarGraph.h; path = KDCustom/KDBarGraph.h; sourceTree = "<group>"; };
 		CB8C87611B4335E10004D9E2 /* KDBarGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDBarGraph.m; path = KDCustom/KDBarGraph.m; sourceTree = "<group>"; };
 		CB8C87621B4335E10004D9E2 /* KDGoalBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDGoalBar.h; path = KDCustom/KDGoalBar.h; sourceTree = "<group>"; };
@@ -430,7 +428,6 @@
 		CB8C875E1B4335D30004D9E2 /* KDCustom */ = {
 			isa = PBXGroup;
 			children = (
-				CB8C875F1B4335E10004D9E2 /* images */,
 				CB8C87601B4335E10004D9E2 /* KDBarGraph.h */,
 				CB8C87611B4335E10004D9E2 /* KDBarGraph.m */,
 				CB8C87621B4335E10004D9E2 /* KDGoalBar.h */,
@@ -498,7 +495,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB8C87661B4335E10004D9E2 /* images in Resources */,
 				24DFC24A1B3ABA2500A4AB30 /* Main.storyboard in Resources */,
 				24DFC24F1B3ABA2500A4AB30 /* LaunchScreen.xib in Resources */,
 				24DFC24C1B3ABA2500A4AB30 /* Images.xcassets in Resources */,

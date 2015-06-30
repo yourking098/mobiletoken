@@ -7,7 +7,7 @@
 //
 
 #import "KDGoalBar.h"
-//#import "SoundPlayer.h"
+#import "ColorHelper.h"
 
 #define toRadians(x) ((x)*M_PI / 180.0)
 #define toDegrees(x) ((x)*180.0 / M_PI)
@@ -18,13 +18,10 @@
 @synthesize allowTap, allowDragging, allowSwitching, allowDecimal, percentLabel, delegate, customText, currentGoal;
 
 #pragma Init & Setup
-- (id)init
-{
-    if ((self = [super init]))
-    {
+- (id)init {
+    if ((self = [super init])) {
         [self setup];
     }
-    
     return self;
 }
 
@@ -42,71 +39,23 @@
     return self;
 }
 
--(void)layoutSubviews {
-    CGRect frame = self.frame;
-    if ([customText length] != 0) {
-        [percentLabel setText:customText];
-    } else if (thumbLayer.hidden) {
-        int percent = percentLayer.percent * 100;
-        [percentLabel setText:[NSString stringWithFormat:@"%i%%", percent]];
-    } else {
-        float total = [self totalCalcuation];
-        if (allowSwitching) {
-            total += currentGoal;
-        }
-        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        if (allowDecimal) {
-            [formatter setMinimumFractionDigits:2];
-            [formatter setMaximumFractionDigits:2];
-        } else {
-            [formatter setMinimumFractionDigits:0];
-            [formatter setMaximumFractionDigits:0];
-        }
-        [percentLabel setText:[formatter stringFromNumber:[NSNumber numberWithFloat:total]]];
-    }
-    CGRect labelFrame = percentLabel.frame;
-    labelFrame.origin.x = frame.size.width / 2 - percentLabel.frame.size.width / 2;
-    labelFrame.origin.y = frame.size.height / 2 - percentLabel.frame.size.height / 2;
-    percentLabel.frame = labelFrame;
-    [super layoutSubviews];
-}
-
 -(void)setup {
     self.backgroundColor = [UIColor clearColor];
     self.clipsToBounds = NO;
-    bg = [UIImage imageNamed:@"circle_outline"];
-    bgPressed = [UIImage imageNamed:@"circle_outline_pressed"];
-    thumb = [UIImage imageNamed:@"circle_thumb"];
-    ridge = [UIImage imageNamed:@"circle_ridge"];
     
-//    percentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 125, 125)];
-//    [percentLabel setFont:[UIFont fontWithName:@"Futura-CondensedMedium" size:60]];
-//    [percentLabel setTextColor:[UIColor colorWithRed:89/255.0 green:89/255.0 blue:89/255.0 alpha:1.0]];
-//    [percentLabel setTextAlignment:UITextAlignmentCenter];
-//    [percentLabel setBackgroundColor:[UIColor clearColor]];
-//    percentLabel.adjustsFontSizeToFitWidth = YES;
-//    percentLabel.minimumFontSize = 10;
-//    [self addSubview:percentLabel];
-    
-    thumbLayer = [CALayer layer];
-    thumbLayer.contentsScale = [UIScreen mainScreen].scale;
-    thumbLayer.contents = (id) thumb.CGImage;
-    thumbLayer.frame = CGRectMake(self.frame.size.width / 2 - thumb.size.width/2, 0, thumb.size.width, thumb.size.height);
-    thumbLayer.hidden = YES;
-    
-    ridgeLayer = [CALayer layer];
-    ridgeLayer.contentsScale = [UIScreen mainScreen].scale;
-    ridgeLayer.contents = (id)ridge.CGImage;
-    ridgeLayer.frame = CGRectMake(0, 0, ridge.size.width, ridge.size.height);
-    [thumbLayer addSublayer:ridgeLayer];
-    
-    imageLayer = [CALayer layer];
-    imageLayer.contentsScale = [UIScreen mainScreen].scale;
-    imageLayer.contents = (id) bg.CGImage;
-    imageLayer.frame = CGRectMake(0, 0, bg.size.width, bg.size.height);
+//    backgroundImg = [UIImage imageNamed:@"circle_outline"];
+//
+//    imageLayer = [CALayer layer];
+//    imageLayer.contentsScale = [UIScreen mainScreen].scale;
+//    imageLayer.contents = (id) backgroundImg.CGImage;
+//    CGFloat imgW=backgroundImg.size.width;
+//    CGFloat imgH=backgroundImg.size.height;
+//    CGFloat imgX=(KSCREEN_WIDTH-imgW)/2.0;
+//    CGFloat imgY=(self.bounds.size.height-imgH)/2.0;
+//    imageLayer.frame = CGRectMake(imgX, imgY, imgW, imgH);
     
     percentLayer = [KDGoalBarPercentLayer layer];
-    percentLayer.color=[UIColor yellowColor];
+    percentLayer.color=[ColorHelper colorWithHexString:@"#E9C860"];
     percentLayer.contentsScale = [UIScreen mainScreen].scale;
     percentLayer.percent = 0;
     percentLayer.frame = self.bounds;
@@ -114,95 +63,17 @@
     [percentLayer setNeedsDisplay];
     
     [self.layer addSublayer:percentLayer];
-    [self.layer addSublayer:imageLayer];
+//    [self.layer addSublayer:imageLayer];
     [imageLayer removeAnimationForKey:@"frame"];
-    [self.layer addSublayer:thumbLayer];
     
     dragging = NO;
     currentAnimating = NO;
-    allowTap = NO;
-    allowDragging = NO;
-    tappableRect = CGRectMake(50, 50, 200, 200);
-}
-
-#pragma mark - Touch Events
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    CGPoint thisPoint = [[touches anyObject] locationInView:self];
     
-    if (CGRectContainsPoint(tappableRect, thisPoint) && allowSwitching) {
-        switchModes = YES;
-        [CATransaction begin];
-        [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
-        imageLayer.contents = (id)bgPressed.CGImage;
-        [CATransaction commit];
-    } else if (allowTap && thumbLayer.hidden) {
-        CGFloat adjustedAngle = toDegrees([self angleBetweenCenterAndPoint:thisPoint]);
-        
-        finalPercent = adjustedAngle / 360 * 100;
-        int oldPercent = percentLayer.percent * 100;
-        
-        if (!currentAnimating) {
-            [self performSelector:@selector(delayedDraw:) withObject:[NSNumber numberWithInt:oldPercent] afterDelay:.001];
-        }
-    } else if (CGRectContainsPoint(thumbLayer.frame, thisPoint)) {
-        thumbTouch = YES;
-        lastAngle = [self angleBetweenCenterAndPoint:thisPoint];
-    }
+//    allowTap = NO;
+//    allowDragging = NO;
+//    tappableRect = CGRectMake(50, 50, 200, 200);
 }
 
--(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    CGPoint thisPoint = [[touches anyObject] locationInView:self];
-    if (allowDragging && thumbLayer.hidden) {
-        dragging = YES;
-        CGFloat adjustedAngle = toDegrees([self angleBetweenCenterAndPoint:thisPoint]);
-        percentLayer.percent = adjustedAngle / 360.0;
-        [self setNeedsLayout];
-        [percentLayer setNeedsDisplay];
-    } else if (!thumbLayer.hidden && thumbTouch) {
-        CGFloat delta = [self angleBetweenCenterAndPoint:thisPoint] - lastAngle;
-        if (fabsf(delta) > (2*M_PI)-fabsf(delta)) {
-            BOOL greaterThanZero = (delta > 0);
-            delta = (2*M_PI)-fabsf(delta);
-            if (greaterThanZero) {
-                delta = -1 * delta;
-            }
-        }
-        totalAngle += delta;
-        lastAngle = [self angleBetweenCenterAndPoint:thisPoint];
-        [self moveThumbToPosition:[self angleBetweenCenterAndPoint:thisPoint]];
-        [self setNeedsLayout];
-    }
-}
-
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    dragging = NO;
-    imageLayer.contents = (id)bg.CGImage;
-    if (switchModes) {
-        switchModes = NO;
-        [self setThumbEnabled:!self.thumbEnabled];
-        [self setCustomText:@""];
-        //[SoundPlayer soundEffect:SETap];
-    } else if (!thumbLayer.hidden) {
-        thumbTouch = NO;
-        if (allowSwitching) {
-            [self setThumbEnabled:!self.thumbEnabled];
-            [self setCustomText:@""];
-            [self.delegate valueCommitted:[NSNumber numberWithFloat:[self totalCalcuation]+currentGoal] fromControl:self];
-            totalAngle = 0;
-        } else if (!currentAnimating) {
-            [self.delegate newValue:[NSNumber numberWithFloat:[self totalCalcuation]] fromControl:self];
-            maxTotal = [self totalCalcuation];
-            [self animateThumbToZero];
-            if (totalAngle) {
-                //[SoundPlayer soundEffect:SERelease];
-            }
-        }
-    }
-}
-
-- (BOOL)thumbHitTest:(CGPoint)point {
-    return CGRectContainsPoint(thumbLayer.frame, point) && !thumbLayer.hidden;
-}
 
 #pragma mark - Drawing/Animation methods
 -(void)delayedDraw:(NSNumber *)newPercentage {
@@ -378,7 +249,7 @@
 }
 
 - (void)displayChartMode {
-    imageLayer.contents = (id)bg.CGImage;
+    imageLayer.contents = (id)backgroundImg.CGImage;
     if (!thumbLayer.hidden && allowSwitching) {
         [self setThumbEnabled:NO];
         [self setCustomText:@""];

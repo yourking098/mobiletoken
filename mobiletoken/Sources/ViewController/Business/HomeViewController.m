@@ -50,7 +50,7 @@
 -(void) buildUI{
     //圆环
     CGFloat goalBarX=0;
-    CGFloat goalBarW=KSCREEN_WIDTH - 2*goalBarX;
+    CGFloat goalBarW=KSCREEN_WIDTH;
     CGFloat goalBarH=goalBarW;
     CGFloat goalBarY=(KSCREEN_HEIGHT-goalBarH)/2.0;
     _myGoalBar=[[KDGoalBar alloc] initWithFrame:CGRectMake(goalBarX, goalBarY, goalBarW, goalBarH)];

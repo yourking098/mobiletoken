@@ -18,7 +18,7 @@
 @end
 
 @interface KDGoalBar : UIControl {
-    UIImage * bg;
+    UIImage * backgroundImg;
     UIImage * bgPressed;
     UIImage * thumb;
     UIImage * ridge;
@@ -58,7 +58,7 @@
 - (BOOL)thumbEnabled;
 - (void)moveThumbToPosition:(CGFloat)angle;
 - (float)bailOutAnimation;
-- (BOOL)thumbHitTest:(CGPoint)point;
+//- (BOOL)thumbHitTest:(CGPoint)point;
 - (void)displayChartMode;
 
 @end
