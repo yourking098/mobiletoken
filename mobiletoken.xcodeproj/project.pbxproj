@@ -40,9 +40,12 @@
 		24DFC2CA1B3AC1E600A4AB30 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DFC2C31B3AC1E600A4AB30 /* NSString+Base64.m */; };
 		24DFC2CB1B3AC1E600A4AB30 /* UIColor+RGBValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DFC2C51B3AC1E600A4AB30 /* UIColor+RGBValues.m */; };
 		24DFC2CD1B3AC1E600A4AB30 /* UIView+QM_Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DFC2C91B3AC1E600A4AB30 /* UIView+QM_Category.m */; };
-		7D7200ED1B4169B300964DC5 /* EFCircularSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7200EC1B4169B300964DC5 /* EFCircularSlider.m */; };
 		CB2903731B40B279001AEC4A /* JKPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2903721B40B279001AEC4A /* JKPromptView.m */; };
 		CB2903761B40B3F0001AEC4A /* UIView+JKPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2903751B40B3F0001AEC4A /* UIView+JKPicker.m */; };
+		CB8C87661B4335E10004D9E2 /* images in Resources */ = {isa = PBXBuildFile; fileRef = CB8C875F1B4335E10004D9E2 /* images */; };
+		CB8C87671B4335E10004D9E2 /* KDBarGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8C87611B4335E10004D9E2 /* KDBarGraph.m */; };
+		CB8C87681B4335E10004D9E2 /* KDGoalBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8C87631B4335E10004D9E2 /* KDGoalBar.m */; };
+		CB8C87691B4335E10004D9E2 /* KDGoalBarPercentLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8C87651B4335E10004D9E2 /* KDGoalBarPercentLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,12 +116,17 @@
 		24DFC2C51B3AC1E600A4AB30 /* UIColor+RGBValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGBValues.m"; sourceTree = "<group>"; };
 		24DFC2C81B3AC1E600A4AB30 /* UIView+QM_Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+QM_Category.h"; sourceTree = "<group>"; };
 		24DFC2C91B3AC1E600A4AB30 /* UIView+QM_Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+QM_Category.m"; sourceTree = "<group>"; };
-		7D7200EB1B4169B300964DC5 /* EFCircularSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFCircularSlider.h; sourceTree = "<group>"; };
-		7D7200EC1B4169B300964DC5 /* EFCircularSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EFCircularSlider.m; sourceTree = "<group>"; };
 		CB2903711B40B279001AEC4A /* JKPromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKPromptView.h; sourceTree = "<group>"; };
 		CB2903721B40B279001AEC4A /* JKPromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKPromptView.m; sourceTree = "<group>"; };
 		CB2903741B40B3F0001AEC4A /* UIView+JKPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JKPicker.h"; sourceTree = "<group>"; };
 		CB2903751B40B3F0001AEC4A /* UIView+JKPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JKPicker.m"; sourceTree = "<group>"; };
+		CB8C875F1B4335E10004D9E2 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = KDCustom/images; sourceTree = "<group>"; };
+		CB8C87601B4335E10004D9E2 /* KDBarGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDBarGraph.h; path = KDCustom/KDBarGraph.h; sourceTree = "<group>"; };
+		CB8C87611B4335E10004D9E2 /* KDBarGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDBarGraph.m; path = KDCustom/KDBarGraph.m; sourceTree = "<group>"; };
+		CB8C87621B4335E10004D9E2 /* KDGoalBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDGoalBar.h; path = KDCustom/KDGoalBar.h; sourceTree = "<group>"; };
+		CB8C87631B4335E10004D9E2 /* KDGoalBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDGoalBar.m; path = KDCustom/KDGoalBar.m; sourceTree = "<group>"; };
+		CB8C87641B4335E10004D9E2 /* KDGoalBarPercentLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDGoalBarPercentLayer.h; path = KDCustom/KDGoalBarPercentLayer.h; sourceTree = "<group>"; };
+		CB8C87651B4335E10004D9E2 /* KDGoalBarPercentLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDGoalBarPercentLayer.m; path = KDCustom/KDGoalBarPercentLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,8 +144,7 @@
 		248765391B3D59DF00DE6F38 /* CustView */ = {
 			isa = PBXGroup;
 			children = (
-				7D7200EB1B4169B300964DC5 /* EFCircularSlider.h */,
-				7D7200EC1B4169B300964DC5 /* EFCircularSlider.m */,
+				CB8C875E1B4335D30004D9E2 /* KDCustom */,
 				CB2903741B40B3F0001AEC4A /* UIView+JKPicker.h */,
 				CB2903751B40B3F0001AEC4A /* UIView+JKPicker.m */,
 				CB2903711B40B279001AEC4A /* JKPromptView.h */,
@@ -420,6 +427,20 @@
 			path = CustNavigationBar;
 			sourceTree = "<group>";
 		};
+		CB8C875E1B4335D30004D9E2 /* KDCustom */ = {
+			isa = PBXGroup;
+			children = (
+				CB8C875F1B4335E10004D9E2 /* images */,
+				CB8C87601B4335E10004D9E2 /* KDBarGraph.h */,
+				CB8C87611B4335E10004D9E2 /* KDBarGraph.m */,
+				CB8C87621B4335E10004D9E2 /* KDGoalBar.h */,
+				CB8C87631B4335E10004D9E2 /* KDGoalBar.m */,
+				CB8C87641B4335E10004D9E2 /* KDGoalBarPercentLayer.h */,
+				CB8C87651B4335E10004D9E2 /* KDGoalBarPercentLayer.m */,
+			);
+			name = KDCustom;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -477,6 +498,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB8C87661B4335E10004D9E2 /* images in Resources */,
 				24DFC24A1B3ABA2500A4AB30 /* Main.storyboard in Resources */,
 				24DFC24F1B3ABA2500A4AB30 /* LaunchScreen.xib in Resources */,
 				24DFC24C1B3ABA2500A4AB30 /* Images.xcassets in Resources */,
@@ -506,9 +528,9 @@
 				24DFC2C01B3AC17500A4AB30 /* TAOInsetsTextField.m in Sources */,
 				24DFC2991B3ABFEF00A4AB30 /* SetupViewController.m in Sources */,
 				2494348B1B3E357D0065C6AE /* SerialNumberViewController.m in Sources */,
-				7D7200ED1B4169B300964DC5 /* EFCircularSlider.m in Sources */,
 				24DFC2CB1B3AC1E600A4AB30 /* UIColor+RGBValues.m in Sources */,
 				CB2903731B40B279001AEC4A /* JKPromptView.m in Sources */,
+				CB8C87681B4335E10004D9E2 /* KDGoalBar.m in Sources */,
 				24DFC2A81B3AC0E300A4AB30 /* BaseViewController.m in Sources */,
 				249434941B3E36DD0065C6AE /* BaseView.m in Sources */,
 				24DFC2721B3ABC0B00A4AB30 /* UIEngine.m in Sources */,
@@ -517,10 +539,12 @@
 				24DFC27C1B3ABE3D00A4AB30 /* GuideViewController.m in Sources */,
 				24DFC2441B3ABA2500A4AB30 /* AppDelegate.m in Sources */,
 				24DFC2911B3ABF8100A4AB30 /* PlistHelper.m in Sources */,
+				CB8C87671B4335E10004D9E2 /* KDBarGraph.m in Sources */,
 				24DFC2C11B3AC17500A4AB30 /* TAONavigationBar.m in Sources */,
 				CB2903761B40B3F0001AEC4A /* UIView+JKPicker.m in Sources */,
 				24DFC2411B3ABA2500A4AB30 /* main.m in Sources */,
 				24DFC2BB1B3AC17500A4AB30 /* NSAttributedString+Attributes.m in Sources */,
+				CB8C87691B4335E10004D9E2 /* KDGoalBarPercentLayer.m in Sources */,
 				24DFC2961B3ABFCD00A4AB30 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

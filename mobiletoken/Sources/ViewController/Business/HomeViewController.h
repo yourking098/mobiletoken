@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-#import "EFCircularSlider.h"
+#import "KDGoalBar.h"
 
 @interface HomeViewController : BaseViewController{
     NSTimer *_timer;
 }
 
 @property(nonatomic,strong) UILabel *lblCheckCode;
-@property(nonatomic,strong) EFCircularSlider *circularSlider;
+
+@property(nonatomic,strong) KDGoalBar *myGoalBar;
 
 @end
