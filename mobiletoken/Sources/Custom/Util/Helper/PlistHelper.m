@@ -24,7 +24,7 @@
     
     [info setValue:cust.serialNumber forKey:@"SerialNumber"];
     [info setValue:cust.realSerialNumber forKey:@"RealSerialNumber"];
-    
+    [info setValue:cust.second forKey:@"Second"];
     //更新
     [info writeToFile:plistPath atomically:YES];
     

@@ -174,15 +174,13 @@ static UIEngine *_instance=nil;
     
     _tabBarVC.tabBar.backgroundImage = [UIImage imageNamed:@"ic_main_tab_off"];
     
+    UIImage* tabBarBackground = [UIImage imageNamed:@"ic_main_tab_off"];
+    [[UITabBar appearance] setBackgroundImage:[tabBarBackground resizableImageWithCapInsets:UIEdgeInsetsZero]];
+    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"ic_main_tab_on"]];
     
-    
-    
-    
-    //[[UITabBar appearance] setBackgroundImage:[[UIImage imageNamed:@"ic_main_tab_off"] resizableImageWithCapInsets:UIEdgeInsetsZero]];
-    //[[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"ic_main_tab_on"]];
     
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                       [ColorHelper colorWithHexString:@"#ffffff"], UITextAttributeTextColor,
+                                                       [ColorHelper colorWithHexString:@"#00b06a"], UITextAttributeTextColor,
                                                        nil,nil] forState:UIControlStateSelected];
     
     
@@ -197,8 +195,6 @@ static UIEngine *_instance=nil;
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     return YES;
 }
-
-
 
 #pragma mark - 页面地址跳转方法
 

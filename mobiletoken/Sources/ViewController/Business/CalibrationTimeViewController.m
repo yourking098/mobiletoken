@@ -12,6 +12,7 @@
 {
     UILabel *dateLabel;
     UILabel *timeLabel;
+    NSTimer *_timer;
 }
 @end
 
@@ -22,6 +23,8 @@
     // Do any additional setup after loading the view.
     [self initNavItem:@"校准时间"];
     [self buildUI];
+    _cust = [[UIEngine getinstance]getCustomerModel];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timerFunc) userInfo:nil repeats:YES];
 }
 
 //创建页面视图
@@ -94,7 +97,7 @@
             UIView *lineBottomView = [[UIView alloc] initWithFrame:CGRectMake(0, (i+1)*120*SCALAE, topButtonView.frame.size.width, 0.5f)];
             lineBottomView.backgroundColor=[ColorHelper colorWithHexString:@"#349c6c"];
             [topButtonView addSubview:lineBottomView];
-            
+
         }
     }
     
@@ -141,6 +144,20 @@
     }
 }
 
+//每一秒都被调用一次
+- (void)timerFunc {
+    NSTimeInterval interval = 0;
+    if (_cust.second != nil) {
+        interval = [_cust.second intValue];
+    }
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm:ss"];
+    NSDate *now = [NSDate date];
+    NSDate *dateNow =[now initWithTimeIntervalSinceNow:+interval];
+    NSString *timestamp = [formatter stringFromDate:dateNow];
+    [timeLabel setText:timestamp];//时间在变化的语句
+}
+
 //按钮点击事件
 - (void)onClickbutton:(UIButton*)sender {
     switch ((int)sender.tag) {
@@ -163,6 +180,7 @@
         case 2:
         {
             //自动校准时间
+            [self showloading:@"校准进行中..."];
             NSURL *url=[NSURL URLWithString:@"http://www.baidu.com"];
             NSURLRequest *request=[NSURLRequest requestWithURL:url];
             NSURLConnection *connection=[[NSURLConnection alloc]initWithRequest:request delegate:self startImmediately:YES];
@@ -183,6 +201,7 @@
 
 #pragma mark - NSURLConnectionDelegate
 
+//自动校准时间
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     NSHTTPURLResponse *httpResponse=(NSHTTPURLResponse *)response;
     if ([response respondsToSelector:@selector(allHeaderFields)]) {
@@ -194,11 +213,71 @@
         int hour=[[array objectAtIndex:0] intValue];
         int minute=[[array objectAtIndex:1] intValue];
         int second=[[array objectAtIndex:2] intValue];
-        NSString *now=[NSString stringWithFormat:@"%0.2d:%0.2d:%0.2d",hour+8,minute,second];
-        //NSLog(@"date:%@",now);
-        timeLabel.text=now;
+        //远程时间
+        NSString *remoteDateString=[NSString stringWithFormat:@"%0.2d:%0.2d:%0.2d",hour+8,minute,second];
+        //NSLog(@"date:%@",remoteDateString);
+        timeLabel.text=remoteDateString;
+        
+        //获取GMT时间
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+        dateFormatter.dateFormat  = @"EEE, dd MM yyyy HH:mm:ss Z";
+        NSDate *remoteDate = [self timeWithinEraFromDate:[dateFormatter dateFromString:time]];
+        
+        //本地时间
+        NSDate *localDate = [self timeWithinEraFromDate:[NSDate date]];
+        
+        //时间校准
+        [self setTimeCalibration:localDate toDate:remoteDate];
+    }
+    [self hideWaiting];
+}
+
+/**
+ *  时间校准
+ *
+ *  @param fromDate 前一个时间
+ *  @param toDate   后一个时间
+ *
+ *  @return 是否成功
+ */
+- (BOOL)setTimeCalibration:(NSDate*)fromDate toDate:(NSDate*)toDate {
+    if (_cust != nil) {
+        NSCalendar *gregorian=[NSCalendar currentCalendar];
+        NSDateComponents *comps=[gregorian components:NSCalendarUnitSecond fromDate:fromDate toDate:toDate options:0];
+        _cust.second = [NSString stringWithFormat:@"%d",(int)[comps second]];
+        return [[UIEngine getinstance] setCustomerModel:_cust];
+    }
+    else {
+        return NO;
     }
 }
+
+/**
+ *  时间转换
+ *
+ *  @param inputDate 输入时间
+ *
+ *  @return 返回时间
+ */
+- (NSDate*)timeWithinEraFromDate:(NSDate*)inputDate {
+    
+    //设置源日期时区
+    NSTimeZone* sourceTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];//或GMT
+    //设置转换后的目标日期时区
+    NSTimeZone* destinationTimeZone = [NSTimeZone localTimeZone];
+    //得到源日期与世界标准时间的偏移量
+    NSInteger sourceGMTOffset = [sourceTimeZone secondsFromGMTForDate:inputDate];
+    //目标日期与本地时区的偏移量
+    NSInteger destinationGMTOffset = [destinationTimeZone secondsFromGMTForDate:inputDate];
+    //得到时间偏移量的差值
+    NSTimeInterval interval = destinationGMTOffset - sourceGMTOffset;
+    //转为现在时间
+    NSDate* destinationDateNow = [[NSDate alloc] initWithTimeInterval:interval sinceDate:inputDate];
+    
+    return destinationDateNow;
+}
+
 
 #pragma mark - CustomPopDelegate
 
@@ -220,6 +299,7 @@
     if (_timePicker != nil) {
         if ([_timePicker.datePiker date]!=nil) {
             NSDate *selected = [_timePicker.datePiker date];
+            
             // 创建一个日期格式器
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             // 为日期格式器设置格式字符串
@@ -229,6 +309,22 @@
             timeLabel.text=destDateString;
         }
     }
+    
+    NSString *strDate = [NSString stringWithFormat:@"%@ %@",dateLabel.text,timeLabel.text];
+    // 创建一个日期格式器
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    // 为日期格式器设置格式字符串
+    [dateFormatter setDateFormat:@"yyyy年MM月dd日 HH:mm:ss"];
+    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
+    [dateFormatter setTimeZone:timeZone];
+    //选择时间
+    NSDate *selectedDate = [self timeWithinEraFromDate:[dateFormatter dateFromString:strDate]];
+    
+    //本地时间
+    NSDate *localDate = [self timeWithinEraFromDate:[NSDate date]];
+    
+    //时间校准
+    [self setTimeCalibration:localDate toDate:selectedDate];
 }
 
 - (void)didReceiveMemoryWarning {

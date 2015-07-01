@@ -16,6 +16,7 @@
     if (self=[super init]) {
         self.serialNumber = dict[@"SerialNumber"];
         self.realSerialNumber = dict[@"RealSerialNumber"];
+        self.second = dict[@"Second"];
     }
     return self;
 }
