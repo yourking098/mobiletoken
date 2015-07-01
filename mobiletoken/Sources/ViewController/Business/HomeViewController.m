@@ -34,7 +34,7 @@
     _cust=[[UIEngine getinstance] getCustomerModel];
     _mcodeForios =@"Y*8#!H19*(0)";//混淆干扰码
     _strCheckCode=@"";
-    self.view.backgroundColor=[ColorHelper colorWithHexString:@"#003E25"];
+    //self.view.backgroundColor=[ColorHelper colorWithHexString:@"#003E25"];
     
     [self buildUI];
     
@@ -48,30 +48,39 @@
 }
 
 -(void) buildUI{
+    UIView *baseView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, KSCREEN_WIDTH, KSCREEN_HEIGHT-64-49)];
+    [self.view addSubview:baseView];
+    
+    //背景
+    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:baseView.bounds];
+    bgImageView.image = [UIImage imageNamed:@"ic_main_bg"];
+    [baseView addSubview:bgImageView];
+    
+    CGFloat bonudsH=baseView.bounds.size.height;
     //圆环
     CGFloat goalBarX=0;
     CGFloat goalBarW=KSCREEN_WIDTH;
     CGFloat goalBarH=goalBarW;
-    CGFloat goalBarY=(KSCREEN_HEIGHT-goalBarH)/2.0;
+    CGFloat goalBarY=(bonudsH-goalBarH)/2.0;
     _myGoalBar=[[KDGoalBar alloc] initWithFrame:CGRectMake(goalBarX, goalBarY, goalBarW, goalBarH)];
     _myGoalBar.backgroundColor=[UIColor clearColor];
     [_myGoalBar setAllowDragging:NO];
     [_myGoalBar setAllowSwitching:NO];
     [_myGoalBar setPercent:_currentPercent animated:NO];
-    [self.view addSubview:_myGoalBar];
+    [baseView addSubview:_myGoalBar];
     
     //验证码
     _strCheckCode = [self createAuthCodeForIos:_cust.serialNumber];
     CGFloat checkCodeH=40;
     CGFloat checkCodeW=KSCREEN_WIDTH;
-    CGFloat checkCodeY=(KSCREEN_HEIGHT-checkCodeH)/2.0;
+    CGFloat checkCodeY=(bonudsH-checkCodeH)/2.0;
     UIFont *sysFont = [UIFont systemFontOfSize:checkCodeH];
     _lblCheckCode=[[BaseView alloc] buildLabel:CGRectMake(0, checkCodeY, checkCodeW, checkCodeH) title:_strCheckCode color:@"#FFFFFF" font:sysFont align:NSTextAlignmentCenter];
-    [self.view addSubview:_lblCheckCode];
+    [baseView addSubview:_lblCheckCode];
     
     //当前验证码为
     UILabel *lblCurrentCheckCodeWord=[[BaseView alloc] buildLabel:CGRectMake(0, _lblCheckCode.top-14-30*SCALAE, KSCREEN_WIDTH, 14) title:@"当前验证码为" color:@"4BB789" font:[UIFont systemFontOfSize:14] align:NSTextAlignmentCenter];
-    [self.view addSubview:lblCurrentCheckCodeWord];
+    [baseView addSubview:lblCurrentCheckCodeWord];
     
     //语音播报
     CGFloat btnW=60;
@@ -89,7 +98,7 @@
     [button setTitle:@"语音播报" forState:UIControlStateNormal];
     [button setTitleColor:[ColorHelper colorWithHexString:@"#FFFFFF"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(brocastCheckCode) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
+    [baseView addSubview:button];
 }
 
 -(void)animation1:(NSTimer *)timer {

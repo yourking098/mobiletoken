@@ -14,5 +14,6 @@
 
 @property(nonatomic,strong) UILabel *lblSerialNum;
 
+@property(nonatomic,assign) int pageType;//0启动页进入   1-设置页面进入
 
 @end

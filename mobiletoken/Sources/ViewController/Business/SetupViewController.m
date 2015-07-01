@@ -90,6 +90,7 @@
         {
             //查看序列号
             SerialNumberViewController *serialNumberVC = [[SerialNumberViewController alloc] init];
+            serialNumberVC.pageType=1;
             [[UIEngine getinstance] pushView:serialNumberVC viewController:self shouldHideTabbar:YES];
         }
             break;

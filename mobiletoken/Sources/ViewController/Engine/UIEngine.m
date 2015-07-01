@@ -123,6 +123,7 @@ static UIEngine *_instance=nil;
     } else if (enCust.serialNumber==nil) {
         //进入查看序列号页面
         SerialNumberViewController *serialNumberVC = [[SerialNumberViewController alloc] init];
+        serialNumberVC.pageType=0;
         UINavigationController *serailNav = [[UINavigationController alloc] initWithRootViewController:serialNumberVC];
         [self rootView:serailNav];
     } else {
