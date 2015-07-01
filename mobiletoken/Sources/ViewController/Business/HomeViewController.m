@@ -30,11 +30,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self initNavItem:@"每30秒更新一次"];
+    [self initNavItem:@"每30秒更新一次" leftValue:nil rightValue:nil];
     _cust=[[UIEngine getinstance] getCustomerModel];
     _mcodeForios =@"Y*8#!H19*(0)";//混淆干扰码
     _strCheckCode=@"";
-    //self.view.backgroundColor=[ColorHelper colorWithHexString:@"#003E25"];
     
     [self buildUI];
     
