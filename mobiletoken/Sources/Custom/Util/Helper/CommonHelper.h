@@ -71,4 +71,11 @@
  */
 +(NSString *) avgMergeStr:(NSString *)str1 andStr2:(NSString *)str2;
 
+/**
+ *  时间转换
+ *  @param inputDate 输入时间
+ *  @return 返回时间
+ */
++ (NSDate*)timeWithinEraFromDate:(NSDate*)inputDate;
+
 @end

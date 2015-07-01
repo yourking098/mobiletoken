@@ -7,6 +7,7 @@
 //
 
 #import "CalibrationTimeViewController.h"
+#import "CommonHelper.h"
 
 @interface CalibrationTimeViewController ()
 {
@@ -153,8 +154,8 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH:mm:ss"];
     NSDate *now = [NSDate date];
-    NSDate *dateNow =[now initWithTimeIntervalSinceNow:+interval];
-    NSString *timestamp = [formatter stringFromDate:dateNow];
+    now =[now initWithTimeIntervalSinceNow:+interval];
+    NSString *timestamp = [formatter stringFromDate:now];
     [timeLabel setText:timestamp];//时间在变化的语句
 }
 
@@ -222,10 +223,10 @@
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
         dateFormatter.dateFormat  = @"EEE, dd MM yyyy HH:mm:ss Z";
-        NSDate *remoteDate = [self timeWithinEraFromDate:[dateFormatter dateFromString:time]];
+        NSDate *remoteDate = [CommonHelper timeWithinEraFromDate:[dateFormatter dateFromString:time]];
         
         //本地时间
-        NSDate *localDate = [self timeWithinEraFromDate:[NSDate date]];
+        NSDate *localDate = [CommonHelper timeWithinEraFromDate:[NSDate date]];
         
         //时间校准
         [self setTimeCalibration:localDate toDate:remoteDate];
@@ -252,32 +253,6 @@
         return NO;
     }
 }
-
-/**
- *  时间转换
- *
- *  @param inputDate 输入时间
- *
- *  @return 返回时间
- */
-- (NSDate*)timeWithinEraFromDate:(NSDate*)inputDate {
-    
-    //设置源日期时区
-    NSTimeZone* sourceTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];//或GMT
-    //设置转换后的目标日期时区
-    NSTimeZone* destinationTimeZone = [NSTimeZone localTimeZone];
-    //得到源日期与世界标准时间的偏移量
-    NSInteger sourceGMTOffset = [sourceTimeZone secondsFromGMTForDate:inputDate];
-    //目标日期与本地时区的偏移量
-    NSInteger destinationGMTOffset = [destinationTimeZone secondsFromGMTForDate:inputDate];
-    //得到时间偏移量的差值
-    NSTimeInterval interval = destinationGMTOffset - sourceGMTOffset;
-    //转为现在时间
-    NSDate* destinationDateNow = [[NSDate alloc] initWithTimeInterval:interval sinceDate:inputDate];
-    
-    return destinationDateNow;
-}
-
 
 #pragma mark - CustomPopDelegate
 
@@ -318,10 +293,10 @@
     NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
     [dateFormatter setTimeZone:timeZone];
     //选择时间
-    NSDate *selectedDate = [self timeWithinEraFromDate:[dateFormatter dateFromString:strDate]];
+    NSDate *selectedDate = [CommonHelper timeWithinEraFromDate:[dateFormatter dateFromString:strDate]];
     
     //本地时间
-    NSDate *localDate = [self timeWithinEraFromDate:[NSDate date]];
+    NSDate *localDate = [CommonHelper timeWithinEraFromDate:[NSDate date]];
     
     //时间校准
     [self setTimeCalibration:localDate toDate:selectedDate];

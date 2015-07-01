@@ -140,10 +140,15 @@
  */
 - (NSString *) createAuthCodeForIos:(NSString *)strCode{
     NSString *strDate=@"";
-    NSDate *date = [NSDate date];//当前日期
+    NSDate *nowDate =[CommonHelper timeWithinEraFromDate:[NSDate date]];//当前日期
+    NSTimeInterval interval = 0;
+    if(_cust.second!=nil){
+        interval = [_cust.second intValue];
+    }
     NSDateFormatter *formatter= [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyMMddHHmm-ss"];
-    strDate=[formatter stringFromDate:date];
+    nowDate =[nowDate initWithTimeIntervalSinceNow:+interval];//本地时间加上与服务器标准时间差
+    strDate=[formatter stringFromDate:nowDate];
     
     NSArray *dArr=[strDate componentsSeparatedByString:@"-"];
     NSString *dateNums = dArr[0];
