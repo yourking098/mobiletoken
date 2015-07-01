@@ -39,7 +39,7 @@
     
     //提示文本
     UILabel *topLabelView=[[UILabel alloc] initWithFrame:CGRectMake(30*SCALAE, 80*SCALAE, baseView.frame.size.width-60*SCALAE, 80*SCALAE)];
-    topLabelView.text=@"手机令牌时间与北京时时区的误差超过一分钟时无法使用";
+    topLabelView.text=@"手机令牌时间与北京时间的误差超过一分钟时无法使用";
     topLabelView.textColor=[ColorHelper colorWithHexString:@"#ffffff"];
     topLabelView.backgroundColor=[UIColor clearColor];
     topLabelView.textAlignment=NSTextAlignmentLeft;

@@ -75,7 +75,7 @@
     
     //提示文本
     UILabel *bottomLabelView=[[UILabel alloc] initWithFrame:CGRectMake(30*SCALAE, CGRectGetMaxY(serialNumberLabelView.frame)+20*SCALAE, baseView.frame.size.width-60*SCALAE, 80*SCALAE)];
-    bottomLabelView.text=@"请登录凤凰娱乐进行手机安全中心的绑定及管理，绑定及管理时需要提供此序列号";
+    bottomLabelView.text=@"绑定及管理时需要提供此序列号";
     bottomLabelView.textColor=[ColorHelper colorWithHexString:@"#ffffff"];
     bottomLabelView.backgroundColor=[UIColor clearColor];
     bottomLabelView.font=[UIFont systemFontOfSize:28*SCALAE];

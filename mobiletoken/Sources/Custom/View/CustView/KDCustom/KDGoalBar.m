@@ -43,16 +43,16 @@
     self.backgroundColor = [UIColor clearColor];
     self.clipsToBounds = NO;
     
-//    backgroundImg = [UIImage imageNamed:@"circle_outline"];
-//
-//    imageLayer = [CALayer layer];
-//    imageLayer.contentsScale = [UIScreen mainScreen].scale;
-//    imageLayer.contents = (id) backgroundImg.CGImage;
-//    CGFloat imgW=backgroundImg.size.width;
-//    CGFloat imgH=backgroundImg.size.height;
-//    CGFloat imgX=(KSCREEN_WIDTH-imgW)/2.0;
-//    CGFloat imgY=(self.bounds.size.height-imgH)/2.0;
-//    imageLayer.frame = CGRectMake(imgX, imgY, imgW, imgH);
+    backgroundImg = [UIImage imageNamed:@"clock-kc"];
+
+    imageLayer = [CALayer layer];
+    imageLayer.contentsScale = [UIScreen mainScreen].scale;
+    imageLayer.contents = (id) backgroundImg.CGImage;
+    CGFloat imgW=KSCREEN_WIDTH-60;
+    CGFloat imgH=imgW;
+    CGFloat imgX=(KSCREEN_WIDTH-imgW)/2.0;
+    CGFloat imgY=(self.bounds.size.height-imgH)/2.0;
+    imageLayer.frame = CGRectMake(imgX, imgY, imgW, imgH);
     
     percentLayer = [KDGoalBarPercentLayer layer];
     percentLayer.color=[ColorHelper colorWithHexString:@"#E9C860"];
@@ -62,8 +62,8 @@
     percentLayer.masksToBounds = NO;
     [percentLayer setNeedsDisplay];
     
+    [self.layer addSublayer:imageLayer];
     [self.layer addSublayer:percentLayer];
-//    [self.layer addSublayer:imageLayer];
     [imageLayer removeAnimationForKey:@"frame"];
     
     dragging = NO;
