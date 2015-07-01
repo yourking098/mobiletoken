@@ -158,10 +158,12 @@
     }else{
         dateNums=[dateNums stringByAppendingString:@"16"];
     }
+    NSString *str1=[dateNums substringWithRange:NSMakeRange(3, 9)];
+    NSString *str2=[dateNums substringWithRange:NSMakeRange(0, 3)];
     NSString *strNewNums=[NSString stringWithFormat:@"%@%@%@",
-                          [dateNums substringWithRange:NSMakeRange(3, 9)],
+                          str1,
                           strCode,
-                          [dateNums substringWithRange:NSMakeRange(0, 3)]
+                          str2
                           ];
     strNewNums = [CommonHelper avgMergeStr:strNewNums andStr2:_mcodeForios];//合并常量
     strNewNums = [AesHelper md5:strNewNums];//MD5加密   32位

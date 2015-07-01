@@ -108,7 +108,7 @@
     strNewNums=[CommonHelper shortString:strNewNums andLength:12];
     
     NSString *strDate=@"";
-    NSDate *date = [NSDate date];//当前日期
+    NSDate *date =[NSDate date];//当前北京时间
     NSDateFormatter *formatter= [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMddHHmm"];
     strDate=[formatter stringFromDate:date];
