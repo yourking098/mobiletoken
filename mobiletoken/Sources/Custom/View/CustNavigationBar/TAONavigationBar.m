@@ -30,7 +30,7 @@
 - (void)drawRect:(CGRect)rect
 {
     if (!_isMainVC) {
-        UIImage *image = [UIImage imageNamed:@"topbg"];//导航的背景图片
+        UIImage *image = [UIImage imageNamed:@"ic_nav_bg"];//导航的背景图片
         [image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     }
 }
@@ -50,7 +50,7 @@
             
             _lblTitle = [[UILabel alloc] initWithFrame:CGRectMake((KSCREEN_WIDTH-titleSize.width-10)/2, 0, titleSize.width+10, 44)];
             _lblTitle.backgroundColor = [UIColor clearColor];
-            _lblTitle.textColor=[ColorHelper colorWithHexString:@"#444444"];
+            _lblTitle.textColor=[ColorHelper colorWithHexString:@"#00b06a"];
             _lblTitle.textAlignment = NSTextAlignmentCenter;
             [_lblTitle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:18]];
             [_lblTitle setText:title];
@@ -95,7 +95,7 @@
             [_btnLeft setTitleEdgeInsets:UIEdgeInsetsMake(0, -55, 0, 4)];
             [_btnLeft setTitle:@"返回" forState:UIControlStateNormal];
             [_btnLeft setTitleColor:[ColorHelper colorWithHexString:@"#333333"] forState:UIControlStateNormal];
-            [_btnLeft setImage:[UIImage imageNamed:@"ic_arrow_left"] forState:UIControlStateNormal];
+            [_btnLeft setImage:[UIImage imageNamed:@"ic_nav_back_off"] forState:UIControlStateNormal];
             [_btnLeft addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
         }
             break;
@@ -135,7 +135,7 @@
             [_btnLeft setTitleEdgeInsets:UIEdgeInsetsMake(0, -55, 0, 4)];
             [_btnLeft setTitle:@"返回" forState:UIControlStateNormal];
             [_btnLeft setTitleColor:[ColorHelper colorWithHexString:@"#333333"] forState:UIControlStateNormal];
-            [_btnLeft setImage:[UIImage imageNamed:@"ic_arrow_left"] forState:UIControlStateNormal];
+            [_btnLeft setImage:[UIImage imageNamed:@"ic_nav_back_off"] forState:UIControlStateNormal];
             [_btnLeft addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
             
             _btnLeft1 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 43)];
@@ -202,21 +202,21 @@
             }
         }
             break;
-
+            
         default:
             break;
     }
     
     //返回按钮
     navitem.hidesBackButton = YES;
-
+    
     //左边按钮
     if (left != nil && leftflag >= 0) {
         UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
                                            initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                            target:nil action:nil];
         
-
+        
         /**
          *  width为负数时，相当于btn向右移动width数值个像素，由于按钮本身和边界间距为5pix，所以width设为-5时，间距正好调整
          *  为0；width为正数时，正好相反，相当于往左移动width数值个像素
@@ -252,7 +252,7 @@
         if ([right count]>1) {
             
             UIBarButtonItem *rightBarButtonItem1 = [[UIBarButtonItem alloc]initWithCustomView:_btnRight1];
-
+            
             navitem.rightBarButtonItems = [NSArray arrayWithObjects:negativeSpacer,rightBarButtonItem,rightBarButtonItem1,nil];
         }
         else {
@@ -271,7 +271,7 @@
     titleflag = 0;
     leftflag = 0;
     rightflag = -1;
-    [self buildUI:delegate title:title segmentedArray:nil left:@"ic_arrow_left" right:nil];
+    [self buildUI:delegate title:title segmentedArray:nil left:@"ic_nav_back_off" right:nil];
 }
 
 /*!
@@ -294,9 +294,9 @@
             rightflag = 1;
         }
     }
-
+    
     NSArray *right = [[NSArray alloc] initWithObjects:rightValue,nil];
-    [self buildUI:delegate title:title segmentedArray:nil left:@"ic_arrow_left" right:right];
+    [self buildUI:delegate title:title segmentedArray:nil left:@"ic_nav_back_off" right:right];
 }
 
 /*!
@@ -358,7 +358,7 @@
     }
     
     NSArray *right = [[NSArray alloc] initWithObjects:rightValue,nil];
-    [self buildUI:delegate title:nil segmentedArray:segmentedArray left:@"ic_arrow_left" right:right];
+    [self buildUI:delegate title:nil segmentedArray:segmentedArray left:@"ic_nav_back_off" right:right];
 }
 
 /*!
@@ -420,7 +420,7 @@
         }
         right = [[NSArray alloc] initWithObjects:rightValue,nil];
     }
-    [self buildUI:delegate title:title segmentedArray:nil left:@"ic_arrow_left" right:right];
+    [self buildUI:delegate title:title segmentedArray:nil left:@"ic_nav_back_off" right:right];
 }
 
 /*!
@@ -451,7 +451,7 @@
     else {
         rightflag = 2;
     }
-    [self buildUI:delegate title:title segmentedArray:nil left:@"ic_arrow_left" right:imageArray];
+    [self buildUI:delegate title:title segmentedArray:nil left:@"ic_nav_back_off" right:imageArray];
 }
 
 - (IBAction)backAction

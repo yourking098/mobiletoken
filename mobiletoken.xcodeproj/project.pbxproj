@@ -40,6 +40,9 @@
 		24DFC2CA1B3AC1E600A4AB30 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DFC2C31B3AC1E600A4AB30 /* NSString+Base64.m */; };
 		24DFC2CB1B3AC1E600A4AB30 /* UIColor+RGBValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DFC2C51B3AC1E600A4AB30 /* UIColor+RGBValues.m */; };
 		24DFC2CD1B3AC1E600A4AB30 /* UIView+QM_Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DFC2C91B3AC1E600A4AB30 /* UIView+QM_Category.m */; };
+		7D57D0361B43921900B31074 /* HZDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D57D0331B43921900B31074 /* HZDatePickerView.m */; };
+		7D57D0371B43921900B31074 /* HZTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D57D0351B43921900B31074 /* HZTimePickerView.m */; };
+		7D57D03A1B43923A00B31074 /* CustomPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D57D0391B43923A00B31074 /* CustomPopView.m */; };
 		CB2903731B40B279001AEC4A /* JKPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2903721B40B279001AEC4A /* JKPromptView.m */; };
 		CB2903761B40B3F0001AEC4A /* UIView+JKPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2903751B40B3F0001AEC4A /* UIView+JKPicker.m */; };
 		CB8C87671B4335E10004D9E2 /* KDBarGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8C87611B4335E10004D9E2 /* KDBarGraph.m */; };
@@ -115,6 +118,12 @@
 		24DFC2C51B3AC1E600A4AB30 /* UIColor+RGBValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGBValues.m"; sourceTree = "<group>"; };
 		24DFC2C81B3AC1E600A4AB30 /* UIView+QM_Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+QM_Category.h"; sourceTree = "<group>"; };
 		24DFC2C91B3AC1E600A4AB30 /* UIView+QM_Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+QM_Category.m"; sourceTree = "<group>"; };
+		7D57D0321B43921900B31074 /* HZDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZDatePickerView.h; sourceTree = "<group>"; };
+		7D57D0331B43921900B31074 /* HZDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZDatePickerView.m; sourceTree = "<group>"; };
+		7D57D0341B43921900B31074 /* HZTimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZTimePickerView.h; sourceTree = "<group>"; };
+		7D57D0351B43921900B31074 /* HZTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZTimePickerView.m; sourceTree = "<group>"; };
+		7D57D0381B43923A00B31074 /* CustomPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopView.h; sourceTree = "<group>"; };
+		7D57D0391B43923A00B31074 /* CustomPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPopView.m; sourceTree = "<group>"; };
 		CB2903711B40B279001AEC4A /* JKPromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKPromptView.h; sourceTree = "<group>"; };
 		CB2903721B40B279001AEC4A /* JKPromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKPromptView.m; sourceTree = "<group>"; };
 		CB2903741B40B3F0001AEC4A /* UIView+JKPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JKPicker.h"; sourceTree = "<group>"; };
@@ -142,6 +151,12 @@
 		248765391B3D59DF00DE6F38 /* CustView */ = {
 			isa = PBXGroup;
 			children = (
+				7D57D0381B43923A00B31074 /* CustomPopView.h */,
+				7D57D0391B43923A00B31074 /* CustomPopView.m */,
+				7D57D0321B43921900B31074 /* HZDatePickerView.h */,
+				7D57D0331B43921900B31074 /* HZDatePickerView.m */,
+				7D57D0341B43921900B31074 /* HZTimePickerView.h */,
+				7D57D0351B43921900B31074 /* HZTimePickerView.m */,
 				CB8C875E1B4335D30004D9E2 /* KDCustom */,
 				CB2903741B40B3F0001AEC4A /* UIView+JKPicker.h */,
 				CB2903751B40B3F0001AEC4A /* UIView+JKPicker.m */,
@@ -531,8 +546,10 @@
 				249434941B3E36DD0065C6AE /* BaseView.m in Sources */,
 				24DFC2721B3ABC0B00A4AB30 /* UIEngine.m in Sources */,
 				24DFC2BE1B3AC17500A4AB30 /* TAOCustomLineLabel.m in Sources */,
+				7D57D0371B43921900B31074 /* HZTimePickerView.m in Sources */,
 				24DFC28E1B3ABF8100A4AB30 /* ColorHelper.m in Sources */,
 				24DFC27C1B3ABE3D00A4AB30 /* GuideViewController.m in Sources */,
+				7D57D0361B43921900B31074 /* HZDatePickerView.m in Sources */,
 				24DFC2441B3ABA2500A4AB30 /* AppDelegate.m in Sources */,
 				24DFC2911B3ABF8100A4AB30 /* PlistHelper.m in Sources */,
 				CB8C87671B4335E10004D9E2 /* KDBarGraph.m in Sources */,
@@ -542,6 +559,7 @@
 				24DFC2BB1B3AC17500A4AB30 /* NSAttributedString+Attributes.m in Sources */,
 				CB8C87691B4335E10004D9E2 /* KDGoalBarPercentLayer.m in Sources */,
 				24DFC2961B3ABFCD00A4AB30 /* HomeViewController.m in Sources */,
+				7D57D03A1B43923A00B31074 /* CustomPopView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

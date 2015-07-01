@@ -72,7 +72,7 @@
  */
 - (void)initNavItem:(NSString*)title {
     [self.navbar initNavItem:self title:title];
-    [self addNavbarSeparateLine];
+    //[self addNavbarSeparateLine];
 }
 
 /*!
@@ -80,7 +80,7 @@
  */
 - (void)initNavItem:(NSString*)title rightValue:(NSString*)rightValue {
     [self.navbar initNavItem:self title:title rightValue:rightValue];
-    [self addNavbarSeparateLine];
+    //[self addNavbarSeparateLine];
 }
 
 /*!
@@ -88,7 +88,7 @@
  */
 - (void)initNavItem:(NSString*)title leftValue:(NSString*)leftValue rightValue:(NSString*)rightValue {
     [self.navbar initNavItem:self title:title leftValue:leftValue rightValue:rightValue];
-    [self addNavbarSeparateLine];
+    //[self addNavbarSeparateLine];
 }
 
 
@@ -97,7 +97,7 @@
  */
 - (void)initNavItemSegment:(NSArray*)segmentedArray rightValue:(NSString*)rightValue {
     [self.navbar initNavItemSegment:self title:segmentedArray rightValue:rightValue];
-    [self addNavbarSeparateLine];
+    //[self addNavbarSeparateLine];
 }
 
 /*!
@@ -105,7 +105,7 @@
  */
 - (void)initNavItemSegment:(NSArray*)segmentedArray leftValue:(NSString *)leftValue rightValue:(NSString*)rightValue {
     [self.navbar initNavItemSegment:self title:segmentedArray leftValue:leftValue rightValue:rightValue];
-    [self addNavbarSeparateLine];
+    //[self addNavbarSeparateLine];
 }
 
 /*!
@@ -283,20 +283,20 @@
 }
 
 - (void)showWithCustomView:(NSString*)waitText {
-	
-	HUD = [[MBProgressHUD alloc] initWithView:self.view];
-	[self.view addSubview:HUD];
-	
-	// Set custom view mode
-	HUD.mode = MBProgressHUDModeCustomView;
-	
-	HUD.delegate = self;
-	HUD.labelText = waitText;
+    
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    
+    // Set custom view mode
+    HUD.mode = MBProgressHUDModeCustomView;
+    
+    HUD.delegate = self;
+    HUD.labelText = waitText;
     HUD.dimBackground =YES;//使背景成黑灰色，让MBProgressHUD成高亮显示
     HUD.opacity=1.0;
-	
-	[HUD show:YES];
-	[HUD hide:YES afterDelay:1.0];
+    
+    [HUD show:YES];
+    [HUD hide:YES afterDelay:1.0];
 }
 
 //显示进度滚轮指示器
@@ -321,7 +321,7 @@
         [_loadingMaskView removeFromSuperview];
         _loadingMaskView = nil;
     }
-
+    
 }
 
 #pragma mark - 弹窗
@@ -416,10 +416,8 @@
  *  @param tag <#tag description#>
  */
 - (void)onClickShowAlertBtnMethod:(int)tag {
-
+    
 }
-
-
 
 #pragma mark - 画线
 
@@ -456,18 +454,18 @@
 //{
 //    //屏幕高度
 //    CGSize screenSize = [UIScreen mainScreen].bounds.size;
-//    
+//
 //    CGRect frame = textField.frame;
 //    int offset = _textOfTopViewHeight + frame.origin.y + 32 - (screenSize.height - 64.0 - 266.0);//键盘高度216+50
-//    
+//
 //    NSTimeInterval animationDuration = 0.30f;
 //    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
 //    [UIView setAnimationDuration:animationDuration];
-//    
+//
 //    //将视图的Y坐标向上移动offset个单位，以使下面腾出地方用于软键盘的显示
 //    if(offset > 0)
 //        self.childView.frame = CGRectMake(0.0f, -offset+64, self.childView.frame.size.width, self.childView.frame.size.height);
-//    
+//
 //    [UIView commitAnimations];
 //}
 
@@ -566,22 +564,5 @@
     // Return the new image.
     return newImage;
 }
-
-
-/*
- 弹出警告提示框
- */
--(void) showPromptMessage:(NSString *)message andImageNameType:(int)imageType{
-    NSString *strImageName=@"";
-    if (imageType==PromptOK) {
-        strImageName=@"picker_ok_sigh";
-    }else if (imageType==PromptAlert){
-        strImageName=@"picker_alert_sigh";
-    }else if (imageType==PromptDel){
-        strImageName=@"picker_del_sigh";
-    }
-    [JKPromptView showWithImageName:strImageName message:message];
-}
-
 
 @end

@@ -49,9 +49,36 @@
 - (void)loginInMainView;
 
 
+#pragma mark - 页面地址跳转方法
+
 /*!
  * 显示当前页面
  */
 - (void)rootView:(UIViewController*)viewController;
+
+/*!
+ * PUSH到当前页面
+ */
+- (void)pushView:(UIViewController*)toViewController viewController:(UIViewController*)fromViewController;
+
+/*!
+ * PUSH到当前页面,控制底部导航栏显示
+ */
+- (void)pushView:(UIViewController*)toViewController viewController:(UIViewController*)fromViewController shouldHideTabbar:(BOOL)shouldHide;
+
+/*!
+ * PUSH到当前页面(使用STORYBOARD)
+ */
+- (void)pushView:(NSString*)sdName ident:(NSString*)ident viewController:(UIViewController*)fromViewController;
+
+/*!
+ * PUSH到当前页面(使用STORYBOARD),控制底部导航栏显示
+ */
+- (void)pushView:(NSString*)sdName ident:(NSString*)ident viewController:(UIViewController*)fromViewController shouldHideTabbar:(BOOL)shouldHide;
+
+/*!
+ * 弹出页面
+ */
+- (void)presentView:(UIViewController*)toViewController viewController:(UIViewController*)fromViewController;
 
 @end

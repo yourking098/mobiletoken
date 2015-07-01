@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "HZDatePickerView.h"
+#import "HZTimePickerView.h"
+#import "CustomPopView.h"
 
-@interface CalibrationTimeViewController : BaseViewController
+@interface CalibrationTimeViewController : BaseViewController<CustomPopDelegate,NSURLConnectionDelegate>
+@property (nonatomic, strong) CustomPopView *customView;
+@property (nonatomic, strong) HZDatePickerView *datePicker;
+@property (nonatomic, strong) HZTimePickerView *timePicker;
 
 @end
