@@ -60,10 +60,18 @@
                 } else {
                     imgView.image = [UIImage imageNamed:@"guide568_01"];
                 }
-
+                UIImage *imgStartBtn=[UIImage imageNamed:@"start-btn"];
+                UIImage *imgStartHoverBtn=[UIImage imageNamed:@"start-btn-hover"];
+                
+                CGFloat btnW=160;
+                CGFloat btnH=35;
                 
                 UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-                button.frame = CGRectMake((KSCREEN_WIDTH-160)/2.0, KSCREEN_HEIGHT-70*SCALAE-60, 160, 60);
+                button.frame = CGRectMake((KSCREEN_WIDTH-btnW)/2.0, KSCREEN_HEIGHT-90*SCALAE-btnH, btnW, btnH);
+                
+                [button setBackgroundImage:imgStartBtn forState:UIControlStateNormal];
+                [button setBackgroundImage:imgStartHoverBtn forState:UIControlStateHighlighted];
+                
                 button.titleLabel.font=[UIFont systemFontOfSize:16];
                 [button setTitle:@"开始使用" forState:UIControlStateNormal];
                 [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

@@ -157,16 +157,23 @@ static UIEngine *_instance=nil;
     
     firstVC.tabBarItem.title = firstVC.title;
     secondVC.tabBarItem.title = secondVC.title;
-    
     UIImage* selectedImage1 = [UIImage imageNamed:@"ic_tab_home"];
     UIImage* selectedImage2 = [UIImage imageNamed:@"ic_tab_setting"];
+    UIImage* noSelectedImage1 = [UIImage imageNamed:@"ic_tab_home"];
+    UIImage* noSelectedImage2 = [UIImage imageNamed:@"ic_tab_setting"];
+    
+    //UIImage* selectedImage1 = [UIImage imageNamed:@"sf-btn-hover"];
+    //UIImage* noSelectedImage1 = [UIImage imageNamed:@"sf-btn"];
+    //UIImage* selectedImage2 = [UIImage imageNamed:@"setting-btn-hover"];
+    //UIImage* noSelectedImage2 = [UIImage imageNamed:@"setting-btn"];
     
     if (IsiOS7Later) {
         selectedImage1 = [selectedImage1 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         selectedImage2 = [selectedImage2 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     }
-    [firstVC.tabBarItem setFinishedSelectedImage:selectedImage1 withFinishedUnselectedImage:[UIImage imageNamed:@"ic_tab_home"]];
-    [secondVC.tabBarItem setFinishedSelectedImage:selectedImage2 withFinishedUnselectedImage:[UIImage imageNamed:@"ic_tab_setting"]];
+    
+    [firstVC.tabBarItem setFinishedSelectedImage:selectedImage1 withFinishedUnselectedImage:noSelectedImage1];
+    [secondVC.tabBarItem setFinishedSelectedImage:selectedImage2 withFinishedUnselectedImage:noSelectedImage2];
     
     
     _tabBarVC.tabBar.selectedImageTintColor = [ColorHelper colorWithHexString:@"#00b06a"];
@@ -179,9 +186,7 @@ static UIEngine *_instance=nil;
     [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"ic_main_tab_on"]];
     
     
-    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                       [ColorHelper colorWithHexString:@"#00b06a"], UITextAttributeTextColor,
-                                                       nil,nil] forState:UIControlStateSelected];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[ColorHelper colorWithHexString:@"#00b06a"], UITextAttributeTextColor,nil,nil] forState:UIControlStateSelected];
     
     
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"AmericanTypewriter" size:11.0f],UITextAttributeFont,nil] forState:UIControlStateNormal];

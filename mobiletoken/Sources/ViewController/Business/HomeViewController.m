@@ -82,26 +82,25 @@
     [baseView addSubview:lblCurrentCheckCodeWord];
     
     //语音播报
-    CGFloat btnW=60;
-    CGFloat btnH=25;
+    UIImage *imgSoundNormal=[UIImage imageNamed:@"sound"];
+    UIImage *imgSoundHover=[UIImage imageNamed:@"sound-hover"];
+    CGFloat btnW=imgSoundNormal.size.width;
+    CGFloat btnH=imgSoundNormal.size.height;
     CGFloat btnX=(KSCREEN_WIDTH-btnW)/2.0;
     CGFloat btnY=_lblCheckCode.bottom+30*SCALAE;
     CGRect btnRect=CGRectMake(btnX, btnY, btnW, btnH);
-    UIFont *btnFont=[UIFont systemFontOfSize:12];
     UIButton *button= [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame=btnRect;
-    button.backgroundColor = [ColorHelper colorWithHexString:@"#FF6347"];
-    button.titleLabel.font = btnFont;
-    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     button.layer.cornerRadius = 10*SCALAE;
-    [button setTitle:@"语音播报" forState:UIControlStateNormal];
-    [button setTitleColor:[ColorHelper colorWithHexString:@"#FFFFFF"] forState:UIControlStateNormal];
+    button.layer.masksToBounds=YES;
+    [button setBackgroundImage:imgSoundNormal forState:UIControlStateNormal];
+    [button setBackgroundImage:imgSoundHover forState:UIControlStateHighlighted];
     [button addTarget:self action:@selector(brocastCheckCode) forControlEvents:UIControlEventTouchUpInside];
     [baseView addSubview:button];
 }
 
 -(void)animation1:(NSTimer *)timer {
-    if (_currentPercent >= 100.00) {
+    if (_currentPercent >= 100.00) {//30转转一圈后重新调取
         _currentPercent = 0;
         _strCheckCode = [self createAuthCodeForIos:_cust.realSerialNumber];
         _lblCheckCode.text=_strCheckCode;
@@ -116,11 +115,10 @@
         NSString *strCodeSigleNum=@"";
         AVSpeechUtterance *utterance;
         AVSpeechSynthesizer *synth = [[AVSpeechSynthesizer alloc] init];
-        //获取当前系统语音
-        AVSpeechSynthesisVoice *voice;
+        AVSpeechSynthesisVoice *voice;//获取当前系统语音
         for(int i=0;i<_strCheckCode.length;i++){
-            NSRange range1=[_strCheckCode rangeOfComposedCharacterSequenceAtIndex:i];
-            strCodeSigleNum=[_strCheckCode substringWithRange:range1];
+            NSRange range1=[_strCheckCode rangeOfComposedCharacterSequenceAtIndex:i];//获取字符串当前位置的字符所在区间
+            strCodeSigleNum=[_strCheckCode substringWithRange:range1];//获取当前字符
             utterance = [AVSpeechUtterance speechUtteranceWithString:strCodeSigleNum];
             voice= [AVSpeechSynthesisVoice voiceWithLanguage:@"zh-tw"];//台湾  zh-cn
             utterance.voice = voice;
@@ -140,8 +138,8 @@
  */
 - (NSString *) createAuthCodeForIos:(NSString *)strCode{
     NSString *strDate=@"";
-    NSDate *nowDate =[CommonHelper timeWithinEraFromDate:[NSDate date]];//当前日期
-    NSTimeInterval interval = 0;
+    NSDate *nowDate =[CommonHelper timeWithinEraFromDate:[NSDate date]];//当前北京时间
+    NSTimeInterval interval = 0;//系统当前时间与北京时间差
     if(_cust.second!=nil){
         interval = [_cust.second intValue];
     }
