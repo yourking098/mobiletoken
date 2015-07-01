@@ -23,6 +23,7 @@
     NSMutableDictionary *info = [[[NSMutableDictionary alloc] initWithContentsOfFile:plistPath] mutableCopy];
     
     [info setValue:cust.serialNumber forKey:@"SerialNumber"];
+    [info setValue:cust.realSerialNumber forKey:@"RealSerialNumber"];
     
     //更新
     [info writeToFile:plistPath atomically:YES];

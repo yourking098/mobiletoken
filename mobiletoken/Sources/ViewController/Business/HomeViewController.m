@@ -70,7 +70,7 @@
     [baseView addSubview:_myGoalBar];
     
     //验证码
-    _strCheckCode = [self createAuthCodeForIos:_cust.serialNumber];
+    _strCheckCode = [self createAuthCodeForIos:_cust.realSerialNumber];
     CGFloat checkCodeH=40;
     CGFloat checkCodeW=KSCREEN_WIDTH;
     CGFloat checkCodeY=(bonudsH-checkCodeH)/2.0;
@@ -104,7 +104,7 @@
 -(void)animation1:(NSTimer *)timer {
     if (_currentPercent >= 100.00) {
         _currentPercent = 0;
-        _strCheckCode = [self createAuthCodeForIos:_cust.serialNumber];
+        _strCheckCode = [self createAuthCodeForIos:_cust.realSerialNumber];
         _lblCheckCode.text=_strCheckCode;
     } else {
         _currentPercent=_currentPercent+_eachIntervalPercent;

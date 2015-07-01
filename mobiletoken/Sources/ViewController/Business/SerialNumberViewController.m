@@ -11,7 +11,10 @@
 #import "UIEngine.h"
 #import "CommonHelper.h"
 
-@interface SerialNumberViewController ()
+@interface SerialNumberViewController () {
+    NSString *strVisiAppSerialNums;
+    NSString *strRealAppSerialNum;
+}
 
 @end
 
@@ -22,11 +25,15 @@
     // Do any additional setup after loading the view.
     [self initNavItem:@"查看序列号"];
     
+    strRealAppSerialNum=@"";//真实序列号、没加“-”
+    strVisiAppSerialNums=@"";//页面显示序列号、有加“-”
+    
     _cust=[[UIEngine getinstance] getCustomerModel];
     //第一次安装启动APP生成序列号
     if (_cust.serialNumber==nil) {
-        NSString *strSerailNumber=[NSString stringWithFormat:@"%@",[self createAppSerialNums]];
-        _cust.serialNumber=strSerailNumber;
+        [self createAppSerialNums];
+        _cust.serialNumber=strVisiAppSerialNums;
+        _cust.realSerialNumber=strRealAppSerialNum;
         [[UIEngine getinstance] setCustomerModel:_cust];
     }
     [self buildUI];
@@ -81,6 +88,7 @@
     if (self.pageType==0) {
         //进入首页
         [[UIEngine getinstance] loginInMainView];
+        
     }else{
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -91,7 +99,7 @@
  * @method 根据手机唯一码产生app序列号
  * @result 生成一个纯32位数字序列号
  */
--(NSString *) createAppSerialNums{
+-(void) createAppSerialNums{
     NSString *strResult=@"";
     //根据手机唯一码产生app序列号
     NSString *uId = [[UIDevice currentDevice].identifierForVendor UUIDString];
@@ -112,6 +120,8 @@
                  [strDate substringWithRange:NSMakeRange(7, 1)]];
     }
     strResult=[NSString stringWithFormat:@"%@%@",strNewNums,strDate];
+    strRealAppSerialNum=strResult;//真实序列号
+    
     if (strResult.length==16) {
         strResult=[NSString stringWithFormat:@"%@-%@-%@-%@",
                    [strResult substringWithRange:NSMakeRange(0, 4)],
@@ -119,7 +129,8 @@
                    [strResult substringWithRange:NSMakeRange(8, 4)],
                    [strResult substringWithRange:NSMakeRange(12, 4)]];
     }
-    return strResult;
+    strVisiAppSerialNums=strResult;//有加“-”显示的序列号
+    
 }
 
 

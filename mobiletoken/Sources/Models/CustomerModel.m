@@ -15,6 +15,7 @@
 -(id) initWithDict:(NSDictionary *)dict{
     if (self=[super init]) {
         self.serialNumber = dict[@"SerialNumber"];
+        self.realSerialNumber = dict[@"RealSerialNumber"];
     }
     return self;
 }
