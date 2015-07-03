@@ -66,7 +66,7 @@
     serialNumberLabelView.textColor=[ColorHelper colorWithHexString:@"#ffffff"];
     serialNumberLabelView.backgroundColor=[ColorHelper colorWithHexString:@"#1c6743"];
     serialNumberLabelView.textAlignment=NSTextAlignmentCenter;
-    serialNumberLabelView.font=[UIFont systemFontOfSize:36*SCALAE];
+    serialNumberLabelView.font=[UIFont systemFontOfSize:50*SCALAE];
     serialNumberLabelView.layer.masksToBounds=YES;
     serialNumberLabelView.layer.borderWidth=2;
     serialNumberLabelView.layer.borderColor=[UIColor blackColor].CGColor;
