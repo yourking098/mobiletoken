@@ -73,12 +73,12 @@
     CGFloat checkCodeH=40;
     CGFloat checkCodeW=KSCREEN_WIDTH;
     CGFloat checkCodeY=(bonudsH-checkCodeH)/2.0;
-    UIFont *sysFont = [UIFont systemFontOfSize:checkCodeH];
+    UIFont *sysFont = [UIFont boldSystemFontOfSize:checkCodeH];
     _lblCheckCode=[[BaseView alloc] buildLabel:CGRectMake(0, checkCodeY, checkCodeW, checkCodeH) title:_strCheckCode color:@"#FFFFFF" font:sysFont align:NSTextAlignmentCenter];
     [baseView addSubview:_lblCheckCode];
     
     //当前验证码为
-    UILabel *lblCurrentCheckCodeWord=[[BaseView alloc] buildLabel:CGRectMake(0, _lblCheckCode.top-14-30*SCALAE, KSCREEN_WIDTH, 14) title:@"当前验证码为" color:@"4BB789" font:[UIFont systemFontOfSize:14] align:NSTextAlignmentCenter];
+    UILabel *lblCurrentCheckCodeWord=[[BaseView alloc] buildLabel:CGRectMake(0, _lblCheckCode.top-14-30*SCALAE, KSCREEN_WIDTH, 14) title:@"当前验证码为" color:@"00B473" font:[UIFont boldSystemFontOfSize:14] align:NSTextAlignmentCenter];
     [baseView addSubview:lblCurrentCheckCodeWord];
     
     //语音播报
