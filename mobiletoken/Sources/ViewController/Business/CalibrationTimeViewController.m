@@ -264,16 +264,24 @@
         NSDateComponents *comps=[gregorian components:NSCalendarUnitSecond fromDate:fromDate toDate:toDate options:0];
         _cust.second = [NSString stringWithFormat:@"%d",(int)[comps second]];
         
-        
         //创建日期格式化对象
         NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy年MM月dd日 HH:mm:ss"];
+        [dateFormatter setDateFormat:@"yyyy年MM月dd日"];
         NSString *strRemoteDate = [dateFormatter stringFromDate:toDate];
-        NSArray *remoteDateList=[strRemoteDate componentsSeparatedByString:@" "];
-        if (remoteDateList.count==2) {
-            dateLabel.text=remoteDateList[0];
-        }
+        dateLabel.text=strRemoteDate;
         
+        if (_cust.second!=nil) {//根据时间差设置当前日期
+            //创建日期格式化对象
+            NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy年MM月dd日"];
+            NSTimeInterval interval = 0;
+            if (_cust.second != nil) {
+                interval = [_cust.second intValue];
+            }
+            toDate =[toDate initWithTimeIntervalSinceNow:+interval];
+            NSString *strRemoteDate = [dateFormatter stringFromDate:toDate];
+            dateLabel.text=strRemoteDate;
+        }
         return [[UIEngine getinstance] setCustomerModel:_cust];
     }
     else {
