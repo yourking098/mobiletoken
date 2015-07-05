@@ -23,8 +23,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initNavItem:@"校准时间"];
-    [self buildUI];
     _cust = [[UIEngine getinstance]getCustomerModel];
+    [self buildUI];
     _timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timerFunc) userInfo:nil repeats:YES];
 }
 
@@ -82,6 +82,22 @@
         [topButtonView addSubview:labelView];
         if (i==0) {
             dateLabel = labelView;
+            if (_cust.second!=nil) {//根据时间差设置当前日期
+                //创建日期格式化对象
+                NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+                [dateFormatter setDateFormat:@"yyyy年MM月dd日 HH:mm:ss"];
+                NSTimeInterval interval = 0;
+                if (_cust.second != nil) {
+                    interval = [_cust.second intValue];
+                }
+                NSDate *now = [NSDate date];
+                now =[now initWithTimeIntervalSinceNow:+interval];
+                NSString *strLocalDate = [dateFormatter stringFromDate:now];
+                NSArray *remoteDateList=[strLocalDate componentsSeparatedByString:@" "];
+                if (remoteDateList.count==2) {
+                    dateLabel.text=remoteDateList[0];
+                }
+            }
         }
         else {
             timeLabel = labelView;
@@ -247,6 +263,17 @@
         NSCalendar *gregorian=[NSCalendar currentCalendar];
         NSDateComponents *comps=[gregorian components:NSCalendarUnitSecond fromDate:fromDate toDate:toDate options:0];
         _cust.second = [NSString stringWithFormat:@"%d",(int)[comps second]];
+        
+        
+        //创建日期格式化对象
+        NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy年MM月dd日 HH:mm:ss"];
+        NSString *strRemoteDate = [dateFormatter stringFromDate:toDate];
+        NSArray *remoteDateList=[strRemoteDate componentsSeparatedByString:@" "];
+        if (remoteDateList.count==2) {
+            dateLabel.text=remoteDateList[0];
+        }
+        
         return [[UIEngine getinstance] setCustomerModel:_cust];
     }
     else {
